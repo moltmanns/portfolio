@@ -84,7 +84,7 @@ const SkillsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
         i++
         setDisplayedText(fullMessage.slice(0, i))
         if (i >= fullMessage.length) clearInterval(interval)
-      }, 50)
+      }, 90)
     }, 2000)
     return () => clearTimeout(timer)
   }, [])
@@ -100,21 +100,32 @@ const SkillsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
     />
   )), [])
 
+  const ringSizes = vw <= 640 ? [100, 150, 200] : [160, 220, 280, 340]
+  const targetsRemaining = skills.length - clickedIndices.length
+
   if (!isOpen) return null
 
   return (
     <div className={`fixed inset-0 z-50 flex items-center justify-center ${winEffects ? 'bg-flash' : 'bg-black/40'} backdrop-blur-sm`}>
-      <div className={`relative w-[800px] h-[800px] max-w-[90vw] max-h-[90vh] rounded-2xl bg-black text-white overflow-visible flex items-center justify-center ${winEffects ? 'animate-shake' : ''}`}>
+      <div className={`
+        relative bg-black text-white overflow-visible flex items-center justify-center
+        rounded-2xl
+        w-[800px] h-[800px] max-w-[95vw] max-h-[95vh]
+        sm:w-[600px] sm:h-[600px]
+        md:w-[700px] md:h-[700px]
+        lg:w-[800px] lg:h-[800px]
+        ${winEffects ? 'animate-shake' : ''}
+      `}>
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-white bg-transparent border border-white rounded-full w-8 h-8 flex items-center justify-center text-lg hover:bg-white hover:text-black transition z-10"
         >✕</button>
 
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-          {staticStars}
+          {vw > 640 && staticStars}
         </div>
 
-        {[160, 220, 280, 340].map((r, i) => (
+        {ringSizes.map((r, i) => (
           <div
             key={i}
             className="absolute rounded-full border border-[#ffffff]/10"
@@ -144,21 +155,20 @@ const SkillsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
                 onClick={() => {
                   setClickedIndices(prev => [...prev, i])
                   setShowScore(true)
-                  setScore(prev => {
-                    const newScore = prev + 100
-                    if (newScore >= 1400) {
-                      setTimeout(() => {
-                        setHasWon(true)
-                        setWinEffects(true)
-                      }, 850)
-                    }
-                    return newScore
-                  })
+                  setScore(prev => prev + 100)
+
+                  if (clickedIndices.length + 1 === skills.length) {
+                    setTimeout(() => {
+                      setHasWon(true)
+                      setWinEffects(true)
+                    }, 850)
+                  }
+
                   setTimeout(() => {
                     setPositions(prev => prev.map((p, idx) => idx === i ? { ...p, removed: true } : p))
                   }, 800)
                 }}
-                className={`flex items-center justify-center px-3 py-2 ${skills[i].color} text-[#0d0d0d] shadow-md transition-all duration-300 ${hoveredIndex === i ? 'rounded-full w-auto' : 'w-12 h-12 rounded-full'} ${clickedIndices.includes(i) ? 'animate-laser-hit bg-lime-400 border-2 border-lime-300 ring-2 ring-lime-300 ring-inset animate-spin-slow' : ''}`}
+                className={`flex items-center justify-center px-3 py-2 ${skills[i].color} text-[#0d0d0d] shadow-md transition-all duration-300 ${hoveredIndex === i ? 'rounded-full w-auto' : 'w-10 h-10 sm:w-12 sm:h-12 rounded-full'} ${clickedIndices.includes(i) ? 'animate-laser-hit bg-lime-400 border-2 border-lime-300 ring-2 ring-lime-300 ring-inset animate-spin-slow' : ''}`}
               >
                 {skills[i].icon}
                 {hoveredIndex === i && (
@@ -170,19 +180,24 @@ const SkillsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
         ))}
 
         {showScore && (
-          <p className="absolute top-3 left-4 text-sm font-mono text-green-400">SCORE: {score}</p>
+          <div className="absolute top-3 left-4 text-sm font-mono text-green-400 space-y-1">
+            <p>SCORE: {score}</p>
+            {clickedIndices.length > 0 && (
+              <p>Targets Remaining: {targetsRemaining}</p>
+            )}
+          </div>
         )}
 
         {hasWon && (
-          <div className="absolute inset-0 z-50 flex flex-col items-center justify-center text-green-400 font-mono">
-            <h1 className="text-5xl mb-2 animate-pulse">YOU WIN!</h1>
-            <p className="text-xl">HIGH SCORE: {score}</p>
+          <div className="absolute inset-0 z-50 flex flex-col items-center justify-center text-green-400 font-mono text-center px-4">
+            <h1 className="text-4xl sm:text-5xl mb-2 animate-pulse">YOU WIN!</h1>
+            <p className="text-lg sm:text-xl">HIGH SCORE: {score}</p>
             <p className="text-sm mt-2 opacity-80">Press F5 to play again.</p>
           </div>
         )}
 
         <p
-          className="absolute bottom-4 left-4 text-xs text-white opacity-80 italic tracking-wide"
+          className="absolute bottom-4 left-4 text-xs text-white opacity-80 italic tracking-wide max-w-[85%] sm:max-w-full"
           style={{ fontFamily: 'var(--font-body)', whiteSpace: 'pre', zIndex: 10 }}
         >
           {displayedText}
