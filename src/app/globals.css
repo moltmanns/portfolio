@@ -325,6 +325,20 @@ p.accented-o {
   transform-origin: center -200px;
 }
 
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 1s linear infinite;
+}
+
+.animate-pulse-fast {
+  animation: pulse 0.5s ease-in-out infinite;
+}
+
+
 
 
 
@@ -408,4 +422,54 @@ p.accented-o {
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+}
+@keyframes laser-hit {
+  0% {
+    background-color: #aaffcc;
+    box-shadow: 0 0 12px #aaffcc, 0 0 24px #aaffcc;
+    transform: scale(1.1);
+  }
+  50% {
+    background-color: #55ff99;
+    box-shadow: 0 0 24px #55ff99, 0 0 32px #55ff99;
+    transform: scale(0.9);
+  }
+  100% {
+    background-color: #aaffcc;
+    box-shadow: 0 0 8px #aaffcc;
+    transform: scale(1.05);
+  }
+}
+
+.animate-laser-hit {
+  animation: laser-hit 0.3s ease-in-out;
+}
+
+@keyframes screen-shake {
+  0% { transform: translate(0px, 0px); }
+  25% { transform: translate(-5px, 5px); }
+  50% { transform: translate(5px, -5px); }
+  75% { transform: translate(-3px, 3px); }
+  100% { transform: translate(0px, 0px); }
+}
+
+.animate-shake {
+  animation: screen-shake 0.5s ease-in-out;
+}
+
+@keyframes flash-bg {
+  0%, 100% { background-color: #000000; }
+  50% { background-color: #bbffcc; }
+}
+
+.bg-flash {
+  animation: flash-bg 0.8s ease-in-out;
+}
+
+
 

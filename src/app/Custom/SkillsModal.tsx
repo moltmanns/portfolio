@@ -1,223 +1,194 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
-import { Dialog, DialogContent } from '@/components/ui/dialog'
+import React, { useState, useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import {
-  SiHtml5,
-  SiCss3,
-  SiJavascript,
-  SiReact,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiBootstrap,
-  SiFigma,
-  SiWordpress,
-  SiShopify,
-  SiGoogleanalytics,
-  SiGoogleads,
-  SiGoogletagmanager,
-  SiMailchimp,
+  SiHtml5, SiCss3, SiJavascript, SiReact, SiNextdotjs, SiTailwindcss, SiBootstrap, SiFigma,
+  SiWordpress, SiShopify, SiGoogleanalytics, SiGoogleads, SiGoogletagmanager, SiMailchimp,
 } from 'react-icons/si'
 
 const skills = [
-  { icon: <SiHtml5 />, label: 'HTML', desc: 'Markup wizardry — like Lego blocks but for browsers.', color: 'bg-orange-200' },
-  { icon: <SiCss3 />, label: 'CSS', desc: 'I bend pixels until they submit.', color: 'bg-blue-200' },
-  { icon: <SiJavascript />, label: 'JavaScript', desc: 'Add interactivity or chaos, your call.', color: 'bg-yellow-200' },
-  { icon: <SiReact />, label: 'React', desc: 'Reusable components? React to that.', color: 'bg-cyan-200' },
-  { icon: <SiNextdotjs />, label: 'Next.js', desc: 'Server-rendered, lightning fast — just like me.', color: 'bg-gray-200' },
-  { icon: <SiTailwindcss />, label: 'TailwindCSS', desc: 'Utility classes, utility flex. Beautiful chaos.', color: 'bg-sky-200' },
-  { icon: <SiBootstrap />, label: 'Bootstrap', desc: 'Grid-based bootstrapped brilliance.', color: 'bg-purple-200' },
-  { icon: <SiFigma />, label: 'Figma', desc: 'I design with pixels before I build with code.', color: 'bg-pink-200' },
-  { icon: <SiWordpress />, label: 'WordPress', desc: 'The OG CMS — still got it.', color: 'bg-indigo-200' },
-  { icon: <SiShopify />, label: 'Shopify', desc: 'Ecom dreams built in liquid logic.', color: 'bg-green-200' },
-  { icon: <SiGoogleanalytics />, label: 'GA4', desc: 'Because what gets measured gets better.', color: 'bg-amber-200' },
-  { icon: <SiGoogleads />, label: 'Google Ads', desc: 'Spend wisely. Convert wildly.', color: 'bg-lime-200' },
-  { icon: <SiGoogletagmanager />, label: 'Tag Manager', desc: 'Tag everything. Track everything.', color: 'bg-emerald-200' },
-  { icon: <SiMailchimp />, label: 'Mailchimp', desc: 'Emails that slap. Literally.', color: 'bg-rose-200' },
+  { icon: <SiHtml5 />, label: 'HTML', color: 'bg-orange-200' },
+  { icon: <SiCss3 />, label: 'CSS', color: 'bg-blue-200' },
+  { icon: <SiJavascript />, label: 'JavaScript', color: 'bg-yellow-200' },
+  { icon: <SiReact />, label: 'React', color: 'bg-cyan-200' },
+  { icon: <SiNextdotjs />, label: 'Next.js', color: 'bg-gray-200' },
+  { icon: <SiTailwindcss />, label: 'TailwindCSS', color: 'bg-sky-200' },
+  { icon: <SiBootstrap />, label: 'Bootstrap', color: 'bg-purple-200' },
+  { icon: <SiFigma />, label: 'Figma', color: 'bg-pink-200' },
+  { icon: <SiWordpress />, label: 'WordPress', color: 'bg-indigo-200' },
+  { icon: <SiShopify />, label: 'Shopify', color: 'bg-green-200' },
+  { icon: <SiGoogleanalytics />, label: 'GA4', color: 'bg-amber-200' },
+  { icon: <SiGoogleads />, label: 'Google Ads', color: 'bg-lime-200' },
+  { icon: <SiGoogletagmanager />, label: 'Tag Manager', color: 'bg-emerald-200' },
+  { icon: <SiMailchimp />, label: 'Mailchimp', color: 'bg-rose-200' },
 ]
 
-type SkillsModalProps = {
-  isOpen: boolean
-  onClose: () => void
-}
+const SkillsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpen, onClose }) => {
+  const vw = typeof window !== 'undefined' ? window.innerWidth : 800
+  const vh = typeof window !== 'undefined' ? window.innerHeight : 800
 
-type Position = {
-  x: number
-  y: number
-  dx: number
-  dy: number
-  gravity: number
-  bounce: number
-  damping: number
-  landed: boolean
-  floating: boolean
-  mass: number
-}
+  const initialPositions = useMemo(() => skills.map((_, i) => {
+    const radius = 160 + (i % 4) * 60
+    const angle = (360 / skills.length) * i
+    const radians = (angle * Math.PI) / 180
+    return {
+      x: Math.cos(radians) * radius,
+      y: Math.sin(radians) * radius,
+      dx: (Math.random() - 0.5) * 2,
+      dy: (Math.random() - 0.5) * 2,
+      startedFloating: false,
+      removed: false,
+      clicked: false,
+    }
+  }), [vw, vh])
 
-const getRandom = (min: number, max: number) => Math.random() * (max - min) + min
+  const [positions, setPositions] = useState(initialPositions)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [score, setScore] = useState(0)
+  const [showScore, setShowScore] = useState(false)
+  const [clickedIndices, setClickedIndices] = useState<number[]>([])
+  const [hasWon, setHasWon] = useState(false)
+  const [winEffects, setWinEffects] = useState(false)
 
-const SkillsModal: React.FC<SkillsModalProps> = ({ isOpen, onClose }) => {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 })
-  const [positions, setPositions] = useState<Position[]>([])
-  const [activeIndex, setActiveIndex] = useState<number | null>(null)
-  const animationRef = useRef<number>()
-
-  // Initialize positions when modal opens
   useEffect(() => {
-    if (isOpen && containerRef.current) {
-      const bounding = containerRef.current.getBoundingClientRect()
-      setContainerSize({ width: bounding.width, height: bounding.height })
-      
-      // Set initial positions above the container
-      setPositions(
-        skills.map(() => ({
-          x: bounding.width / 2 - 24, // Center horizontally
-          y: -100 - Math.random() * 200, // Start above the container with random offset
-          dx: getRandom(-1, 1), // Slight horizontal variation
-          dy: 0,
-          gravity: 0.5,
-          bounce: 0.7 + Math.random() * 0.2,
-          damping: 0.98,
-          landed: false,
-          floating: false,
-          mass: 0.8 + Math.random() * 0.4,
-        }))
-      )
-    }
-  }, [isOpen])
+    const handleKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [onClose])
 
-  // Animation loop
   useEffect(() => {
-    if (!isOpen || positions.length === 0) return
-
-    const animate = () => {
-      setPositions(prev => {
-        const maxX = containerSize.width - 48
-        const maxY = containerSize.height - 48
-
-        return prev.map((pos, i) => {
-          if (activeIndex === i) return pos
-
-          let { x, y, dx, dy, gravity, bounce, damping, landed, floating, mass } = pos
-
-          if (!landed) {
-            // Apply gravity
-            dy += gravity * mass
-            
-            // Update position
-            y += dy
-            x += dx
-
-            // Check for floor collision
-            if (y >= maxY) {
-              y = maxY
-              dy = -dy * bounce // Bounce with energy loss
-              
-              // If bounce is small enough, transition to floating
-              if (Math.abs(dy) < 2) {
-                return {
-                  ...pos,
-                  x: x, // Keep current x position
-                  y: maxY - 2, // Slightly above floor
-                  dx: getRandom(-0.8, 0.8),
-                  dy: getRandom(-0.8, 0.8),
-                  landed: true,
-                  floating: true,
-                  damping: 0.99 // Less damping when floating
-                }
-              }
-            }
-
-            return { ...pos, x, y, dx, dy }
-          }
-
-          if (floating) {
-            // Apply damping (air resistance)
-            dx *= damping
-            dy *= damping
-
-            // Random floating movement
-            if (Math.random() < 0.02) {
-              dx += getRandom(-0.3, 0.3)
-              dy += getRandom(-0.3, 0.3)
-            }
-
-            // Update position
-            x += dx
-            y += dy
-
-            // Boundary collisions with slight bounce
-            if (x < 0) {
-              x = 0
-              dx = -dx * 0.6
-            } else if (x > maxX) {
-              x = maxX
-              dx = -dx * 0.6
-            }
-
-            if (y < 0) {
-              y = 0
-              dy = -dy * 0.6
-            } else if (y > maxY) {
-              y = maxY
-              dy = -dy * 0.6
-            }
-
-            return { ...pos, x, y, dx, dy, landed: true, floating: true }
-          }
-
-          return pos
-        })
-      })
-
-      animationRef.current = requestAnimationFrame(animate)
+    let animationFrame: number
+    const move = () => {
+      setPositions(prev => prev.map((pos, i) => {
+        if (hoveredIndex === i || pos.removed) return pos
+        let { x, y, dx, dy, startedFloating } = pos
+        if (!startedFloating) return { ...pos, startedFloating: true }
+        if (x > vw / 2 - 40 || x < -vw / 2 + 40) dx = -dx
+        if (y > vh / 2 - 40 || y < -vh / 2 + 40) dy = -dy
+        return { ...pos, x: x + dx, y: y + dy, dx, dy }
+      }))
+      animationFrame = requestAnimationFrame(move)
     }
+    animationFrame = requestAnimationFrame(move)
+    return () => cancelAnimationFrame(animationFrame)
+  }, [vw, vh, hoveredIndex])
 
-    animationRef.current = requestAnimationFrame(animate)
-    return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current)
-    }
-  }, [isOpen, activeIndex, containerSize, positions.length])
+  const fullMessage = '*My skills have no boundaries—just like these orbits, they take me wherever I go next.'
+  const [displayedText, setDisplayedText] = useState('')
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      let i = 0
+      const interval = setInterval(() => {
+        i++
+        setDisplayedText(fullMessage.slice(0, i))
+        if (i >= fullMessage.length) clearInterval(interval)
+      }, 50)
+    }, 2000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const staticStars = useMemo(() => [...Array(50)].map((_, idx) => (
+    <div
+      key={`star-${idx}`}
+      className="absolute w-[2px] h-[2px] bg-white opacity-20 rounded-full"
+      style={{
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`
+      }}
+    />
+  )), [])
+
+  if (!isOpen) return null
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="bg-black text-white max-w-3xl rounded-2xl p-0 flex flex-col items-center justify-center min-h-[550px]">
-        <div ref={containerRef} className="relative w-full h-[550px] overflow-hidden rounded-lg z-10">
-          {skills.map((skill, i) => (
+    <div className={`fixed inset-0 z-50 flex items-center justify-center ${winEffects ? 'bg-flash' : 'bg-black/40'} backdrop-blur-sm`}>
+      <div className={`relative w-[800px] h-[800px] max-w-[90vw] max-h-[90vh] rounded-2xl bg-black text-white overflow-visible flex items-center justify-center ${winEffects ? 'animate-shake' : ''}`}>
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 text-white bg-transparent border border-white rounded-full w-8 h-8 flex items-center justify-center text-lg hover:bg-white hover:text-black transition z-10"
+        >✕</button>
+
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          {staticStars}
+        </div>
+
+        {[160, 220, 280, 340].map((r, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full border border-[#ffffff]/10"
+            style={{
+              width: `${r * 2}px`,
+              height: `${r * 2}px`,
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)'
+            }}
+          />
+        ))}
+
+        <div className="absolute w-6 h-6 rounded-full bg-gradient-to-br from-purple-500 to-teal-400 blur-xl animate-pulse" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} />
+
+        {positions.map((pos, i) => (
+          !pos.removed && (
             <motion.div
               key={i}
-              className={`absolute w-12 h-12 rounded-full text-black text-xl flex items-center justify-center shadow-md cursor-pointer z-20 transition-all duration-300 ${
-                activeIndex === i
-                  ? 'bg-white ring-2 ring-purple-400 ring-offset-2 animate-pulse border-teal-400 border'
-                  : `${skill.color}`
-              }`}
-              animate={{ 
-                x: positions[i]?.x || containerSize.width / 2 - 24, 
-                y: positions[i]?.y || -100,
-                scale: activeIndex === i ? 1.1 : 1
-              }}
-              transition={{ 
-                type: 'spring',
-                damping: 20,
-                stiffness: activeIndex === i ? 300 : 100
-              }}
-              onClick={() => setActiveIndex(activeIndex === i ? null : i)}
-              whileHover={{ scale: 1.05 }}
+              className="fixed top-1/2 left-1/2"
+              animate={{ x: pos.x, y: pos.y }}
+              transition={{ ease: 'linear', duration: 0.05 }}
             >
-              {skill.icon}
-              {activeIndex === i && (
-                <div className="absolute -top-14 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white text-black text-xs rounded px-3 py-2 shadow z-30">
-                  <strong>{skill.label}</strong>: {skill.desc}
-                </div>
-              )}
+              <motion.div
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => {
+                  setClickedIndices(prev => [...prev, i])
+                  setShowScore(true)
+                  setScore(prev => {
+                    const newScore = prev + 100
+                    if (newScore >= 1400) {
+                      setTimeout(() => {
+                        setHasWon(true)
+                        setWinEffects(true)
+                      }, 850)
+                    }
+                    return newScore
+                  })
+                  setTimeout(() => {
+                    setPositions(prev => prev.map((p, idx) => idx === i ? { ...p, removed: true } : p))
+                  }, 800)
+                }}
+                className={`flex items-center justify-center px-3 py-2 ${skills[i].color} text-[#0d0d0d] shadow-md transition-all duration-300 ${hoveredIndex === i ? 'rounded-full w-auto' : 'w-12 h-12 rounded-full'} ${clickedIndices.includes(i) ? 'animate-laser-hit bg-lime-400 border-2 border-lime-300 ring-2 ring-lime-300 ring-inset animate-spin-slow' : ''}`}
+              >
+                {skills[i].icon}
+                {hoveredIndex === i && (
+                  <span className="ml-2 text-sm font-semibold whitespace-nowrap">{skills[i].label}</span>
+                )}
+              </motion.div>
             </motion.div>
-          ))}
-        </div>
-      </DialogContent>
-    </Dialog>
+          )
+        ))}
+
+        {showScore && (
+          <p className="absolute top-3 left-4 text-sm font-mono text-green-400">SCORE: {score}</p>
+        )}
+
+        {hasWon && (
+          <div className="absolute inset-0 z-50 flex flex-col items-center justify-center text-green-400 font-mono">
+            <h1 className="text-5xl mb-2 animate-pulse">YOU WIN!</h1>
+            <p className="text-xl">HIGH SCORE: {score}</p>
+            <p className="text-sm mt-2 opacity-80">Press F5 to play again.</p>
+          </div>
+        )}
+
+        <p
+          className="absolute bottom-4 left-4 text-xs text-white opacity-80 italic tracking-wide"
+          style={{ fontFamily: 'var(--font-body)', whiteSpace: 'pre', zIndex: 10 }}
+        >
+          {displayedText}
+        </p>
+      </div>
+    </div>
   )
 }
 
