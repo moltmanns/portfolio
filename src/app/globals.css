@@ -309,6 +309,24 @@ p.accented-o {
 }
 
 
+.orbit-1 {
+  top: 0;
+  left: 50%;
+  transform-origin: center 200px;
+}
+.orbit-2 {
+  top: 50%;
+  left: 0;
+  transform-origin: 200px center;
+}
+.orbit-3 {
+  bottom: 0;
+  left: 50%;
+  transform-origin: center -200px;
+}
+
+
+
 
 .dark {
   --background: oklch(0.145 0 0);

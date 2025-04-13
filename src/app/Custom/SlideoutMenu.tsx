@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Modal from './Modal'
+import SkillsModal from './SkillsModal'
 import {
   FaInstagram,
   FaTwitter,
@@ -19,15 +20,11 @@ export default function SlideoutMenu({
   isOpen: boolean
   onClose: () => void
 }) {
-  const [activeModal, setActiveModal] = useState<null | 'work' | 'services' | 'contact'>(null)
+  const [activeModal, setActiveModal] = useState<null | 'services' | 'contact'>(null)
+  const [showSkillsModal, setShowSkillsModal] = useState(false)
 
-  const openModal = (type: typeof activeModal) => {
-    setActiveModal(type)
-  }
-
-  const closeModal = () => {
-    setActiveModal(null)
-  }
+  const openModal = (type: typeof activeModal) => setActiveModal(type)
+  const closeModal = () => setActiveModal(null)
 
   return (
     <>
@@ -37,16 +34,16 @@ export default function SlideoutMenu({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/10 backdrop-blur-sm"
-            onClick={onClose} // close when clicking the background
+            className="fixed inset-0 z-40 bg-black/10 backdrop-blur-sm"
+            onClick={onClose}
           >
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="absolute top-0 right-0 h-full w-[375px] max-w-full bg-[#4efcf0] text-[#0d0d0d] flex flex-col px-8 py-6 border-l-1 border-[#0d0d0d] shadow-[ -15px_0px_5px_rgba(1,1,1,0.1)] z-50"
-              onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
+              className="absolute top-0 right-0 h-full w-[375px] max-w-full bg-[#4efcf0] text-[#0d0d0d] flex flex-col px-8 py-6 border-l border-[#0d0d0d] shadow-[ -15px_0px_5px_rgba(1,1,1,0.1)] z-50"
+              onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <button
@@ -58,21 +55,30 @@ export default function SlideoutMenu({
 
               {/* Big Menu Items */}
               <div className="space-y-16 mb-16 flex flex-col">
-                <button onClick={() => openModal('work')} className="text-left text-5xl font-black cursor-pointer">
+                <button
+                  onClick={() => setShowSkillsModal(true)}
+                  className="text-left text-5xl font-black cursor-pointer"
+                >
                   SKILLS
                   <span className="menu-accented block text-sm font-normal">
                     I got the fries that will cross your eyes
                   </span>
                 </button>
 
-                <button onClick={() => openModal('services')} className="text-left text-5xl font-black cursor-pointer">
+                <button
+                  onClick={() => openModal('services')}
+                  className="text-left text-5xl font-black cursor-pointer"
+                >
                   ABOUT
                   <span className="menu-accented block text-sm font-normal -mt-1">
                     So you want to get to know me ehhh...
                   </span>
                 </button>
 
-                <button onClick={() => openModal('contact')} className="text-left text-5xl font-black cursor-pointer">
+                <button
+                  onClick={() => openModal('contact')}
+                  className="text-left text-5xl font-black cursor-pointer"
+                >
                   CONTACT
                   <span className="menu-accented block text-sm font-normal -mt-1">
                     How would you like to reach me?
@@ -97,14 +103,8 @@ export default function SlideoutMenu({
         )}
       </AnimatePresence>
 
-      {/* Modal */}
+      {/* General Modals */}
       <Modal isOpen={!!activeModal} onClose={closeModal}>
-        {activeModal === 'work' && (
-          <div>
-            <h2 className="text-xl font-bold mb-2">Our Work</h2>
-            <p>This is where we flex our pixels. Projects we’ve poured our souls into, and some we just made look really cool.</p>
-          </div>
-        )}
         {activeModal === 'services' && (
           <div>
             <h2 className="text-xl font-bold mb-2">Our Services</h2>
@@ -118,6 +118,9 @@ export default function SlideoutMenu({
           </div>
         )}
       </Modal>
+
+      {/* ✅ Skills Galaxy Modal */}
+      <SkillsModal isOpen={showSkillsModal} onClose={() => setShowSkillsModal(false)} />
     </>
   )
 }
