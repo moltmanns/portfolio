@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Modal from './Modal'
 import SkillsModal from './SkillsModal'
+import AboutMeModal from './AboutMeModal'
 import {
   FaInstagram,
   FaTwitter,
@@ -22,8 +23,23 @@ export default function SlideoutMenu({
 }) {
   const [activeModal, setActiveModal] = useState<null | 'services' | 'contact'>(null)
   const [showSkillsModal, setShowSkillsModal] = useState(false)
+  const [showAboutMeModal, setShowAboutMeModal] = useState(false)
 
-  const openModal = (type: typeof activeModal) => setActiveModal(type)
+  const openModal = (type: typeof activeModal) => {
+    setActiveModal(type)
+    onClose() // close slideout menu when modal opens
+  }
+
+  const handleOpenSkills = () => {
+    setShowSkillsModal(true)
+    onClose()
+  }
+
+  const handleOpenAbout = () => {
+    setShowAboutMeModal(true)
+    onClose()
+  }
+
   const closeModal = () => setActiveModal(null)
 
   return (
@@ -56,7 +72,7 @@ export default function SlideoutMenu({
               {/* Big Menu Items */}
               <div className="space-y-16 mb-16 flex flex-col">
                 <button
-                  onClick={() => setShowSkillsModal(true)}
+                  onClick={handleOpenSkills}
                   className="text-left text-5xl font-black cursor-pointer"
                 >
                   SKILLS
@@ -66,7 +82,7 @@ export default function SlideoutMenu({
                 </button>
 
                 <button
-                  onClick={() => openModal('services')}
+                  onClick={handleOpenAbout}
                   className="text-left text-5xl font-black cursor-pointer"
                 >
                   ABOUT
@@ -90,12 +106,12 @@ export default function SlideoutMenu({
               <div className="mt-auto">
                 <p className="text-sm mb-4 flex justify-center">Follow Me? Maybe?!</p>
                 <div className="flex justify-center space-x-8 text-xl mb-4">
-                  <a href="https://dribbble.com" target="_blank"><FaDribbble /></a>
-                  <a href="https://linkedin.com" target="_blank"><FaLinkedin /></a>
-                  <a href="https://pinterest.com" target="_blank"><FaPinterest /></a>
-                  <a href="https://twitter.com" target="_blank"><FaTwitter /></a>
-                  <a href="https://instagram.com" target="_blank"><FaInstagram /></a>
-                  <a href="https://facebook.com" target="_blank"><FaFacebook /></a>
+                  <a href="https://dribbble.com" target="_blank" rel="noreferrer"><FaDribbble /></a>
+                  <a href="https://linkedin.com" target="_blank" rel="noreferrer"><FaLinkedin /></a>
+                  <a href="https://pinterest.com" target="_blank" rel="noreferrer"><FaPinterest /></a>
+                  <a href="https://twitter.com" target="_blank" rel="noreferrer"><FaTwitter /></a>
+                  <a href="https://instagram.com" target="_blank" rel="noreferrer"><FaInstagram /></a>
+                  <a href="https://facebook.com" target="_blank" rel="noreferrer"><FaFacebook /></a>
                 </div>
               </div>
             </motion.div>
@@ -103,7 +119,7 @@ export default function SlideoutMenu({
         )}
       </AnimatePresence>
 
-      {/* General Modals */}
+      {/* Modal Shells */}
       <Modal isOpen={!!activeModal} onClose={closeModal}>
         {activeModal === 'services' && (
           <div>
@@ -114,13 +130,14 @@ export default function SlideoutMenu({
         {activeModal === 'contact' && (
           <div>
             <h2 className="text-xl font-bold mb-2">Contact Me</h2>
-            <p>Here's a few different ways to keep it easy, I know its been a long day.</p>
+            <p>Here's a few different ways to keep it easy, I know it's been a long day.</p>
           </div>
         )}
       </Modal>
 
-      {/* ✅ Skills Galaxy Modal */}
+      {/* Skills + About Me */}
       <SkillsModal isOpen={showSkillsModal} onClose={() => setShowSkillsModal(false)} />
+      <AboutMeModal isOpen={showAboutMeModal} onClose={() => setShowAboutMeModal(false)} />
     </>
   )
 }

@@ -471,5 +471,48 @@ p.accented-o {
   animation: flash-bg 0.8s ease-in-out;
 }
 
+.polaroid::before,
+.polaroid::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transform: rotate(-45deg);
+  z-index: 1;
+}
+
+.polaroid::before {
+  top: -10px;
+  left: -10px;
+}
+
+.polaroid::after {
+  top: -10px;
+  right: -10px;
+  transform: rotate(45deg);
+}
+
+/* globals.css */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3affca;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #66ffc2;
+}
+
+
 
 

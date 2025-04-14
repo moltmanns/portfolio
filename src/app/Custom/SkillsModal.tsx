@@ -118,7 +118,7 @@ const SkillsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
       `}>
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-white bg-transparent border border-white rounded-full w-8 h-8 flex items-center justify-center text-lg hover:bg-white hover:text-black transition z-10"
+          className="absolute top-3 right-3 text-white bg-transparent border border-white rounded-full w-8 h-8 flex items-center justify-center text-lg hover:bg-white hover:text-black transition z-10 cursor-pointer"
         >✕</button>
 
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -189,7 +189,7 @@ const SkillsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
         )}
 
         {hasWon && (
-          <div className="absolute inset-0 z-50 flex flex-col items-center justify-center text-green-400 font-mono text-center px-4">
+          <div className="absolute inset-0 z-50 flex flex-col items-center justify-center text-green-400 font-mono pointer-events-none">
             <h1 className="text-4xl sm:text-5xl mb-2 animate-pulse">YOU WIN!</h1>
             <p className="text-lg sm:text-xl">HIGH SCORE: {score}</p>
             <p className="text-sm mt-2 opacity-80">Press F5 to play again.</p>
