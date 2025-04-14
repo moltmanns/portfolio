@@ -27,9 +27,9 @@ const floatingPolaroids = [
 ]
 
 const fridgeMagnets = [
-  { src: '/assets/magnets/all-inclusive.svg', alt: 'All-Inclusives', style: 'top-[5%] left-[25%] rotate-[-10deg]' },
-  { src: '/assets/magnets/lego.svg', alt: 'Lego', style: 'top-[25%] right-[22%] rotate-[15deg]' },
-  { src: '/assets/magnets/warhammer.svg', alt: 'Warhammer Painting', style: 'bottom-[36%] left-[6%] rotate-[-5deg]' },
+  { src: '/assets/suns-out-stickerv2.webp', alt: 'All-Inclusives', style: 'top-[5%] left-[25%] rotate-[-10deg]' },
+  { src: '/assets/lego-magnet-about-me-modal.webp', alt: 'Lego', style: 'top-[25%] right-[22%] rotate-[15deg]' },
+  { src: '/assets/warhammer-miniv2.webp', alt: 'Warhammer Painting', style: 'bottom-[36%] left-[6%] rotate-[-5deg]' },
 ]
 
 const AboutMeModal: React.FC<AboutMeModalProps> = ({ isOpen, onClose }) => {
@@ -211,21 +211,22 @@ I love empathy-driven design, clever UI, and finding efficient solutions to prob
         ))
       }
 
-      {/* Fridge Magnets */}
-      {booted && fridgeMagnets.map((magnet, i) => (
-        <div
-          key={i}
-          className={`fixed z-30 w-10 sm:w-12 select-none pointer-events-none ${magnet.style}`}
-        >
-          <Image
-            src={magnet.src}
-            alt={magnet.alt}
-            width={48}
-            height={48}
-            className="object-contain"
-          />
-        </div>
-      ))}
+{/* Fridge Magnets */}
+{booted && fridgeMagnets.map((magnet, i) => (
+  <div
+    key={i}
+    className={`fixed z-30 w-[72px] sm:w-[96px] md:w-[112px] pointer-events-none ${magnet.style}`}
+  >
+    <Image
+      src={magnet.src}
+      alt={magnet.alt}
+      width={128}
+      height={128}
+      className="object-contain w-full h-auto"
+    />
+  </div>
+))}
+
     </div>
   )
 }
