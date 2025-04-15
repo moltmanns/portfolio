@@ -3,7 +3,6 @@ import "./globals.css";
 
 import { Schoolbell } from "next/font/google";
 import { Walter_Turncoat } from "next/font/google";
-import FloatingBlobs from "./Custom/FloatingBlobs";
 import ToastPopup from "./Custom/ToastPopup";
 
 const schoolbell = Schoolbell({
@@ -29,10 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="overflow-hidden">
-        <FloatingBlobs />
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body>
+          {children}
         <ToastPopup />
       </body>
     </html>

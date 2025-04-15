@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Modal from './Modal'
 import SkillsModal from './SkillsModal'
 import AboutMeModal from './AboutMeModal'
+import ContactModal from './ContactModal'
 import {
   FaInstagram,
   FaTwitter,
@@ -21,13 +22,14 @@ export default function SlideoutMenu({
   isOpen: boolean
   onClose: () => void
 }) {
-  const [activeModal, setActiveModal] = useState<null | 'services' | 'contact'>(null)
+  const [activeModal, setActiveModal] = useState<null | 'services'>(null)
   const [showSkillsModal, setShowSkillsModal] = useState(false)
   const [showAboutMeModal, setShowAboutMeModal] = useState(false)
+  const [showContactModal, setShowContactModal] = useState(false)
 
   const openModal = (type: typeof activeModal) => {
     setActiveModal(type)
-    onClose() // close slideout menu when modal opens
+    onClose()
   }
 
   const handleOpenSkills = () => {
@@ -37,6 +39,11 @@ export default function SlideoutMenu({
 
   const handleOpenAbout = () => {
     setShowAboutMeModal(true)
+    onClose()
+  }
+
+  const handleOpenContact = () => {
+    setShowContactModal(true)
     onClose()
   }
 
@@ -92,7 +99,7 @@ export default function SlideoutMenu({
                 </button>
 
                 <button
-                  onClick={() => openModal('contact')}
+                  onClick={handleOpenContact}
                   className="text-left text-5xl font-black cursor-pointer"
                 >
                   CONTACT
@@ -119,25 +126,10 @@ export default function SlideoutMenu({
         )}
       </AnimatePresence>
 
-      {/* Modal Shells */}
-      <Modal isOpen={!!activeModal} onClose={closeModal}>
-        {activeModal === 'services' && (
-          <div>
-            <h2 className="text-xl font-bold mb-2">Our Services</h2>
-            <p>Design, dev, digital sorcery. Whether it's a full site makeover or just a spicy landing page, we got you.</p>
-          </div>
-        )}
-        {activeModal === 'contact' && (
-          <div>
-            <h2 className="text-xl font-bold mb-2">Contact Me</h2>
-            <p>Here's a few different ways to keep it easy, I know it's been a long day.</p>
-          </div>
-        )}
-      </Modal>
-
-      {/* Skills + About Me */}
+      {/* Feature Modals */}
       <SkillsModal isOpen={showSkillsModal} onClose={() => setShowSkillsModal(false)} />
       <AboutMeModal isOpen={showAboutMeModal} onClose={() => setShowAboutMeModal(false)} />
+      <ContactModal isOpen={showContactModal} onClose={() => setShowContactModal(false)} />
     </>
   )
 }

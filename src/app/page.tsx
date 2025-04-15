@@ -7,6 +7,7 @@ import Navbar from "./Custom/Navbar";
 import VerticalMarquee from "./Custom/VerticalMarquee";
 import SocialProof from "./Custom/SocialProof";
 import BottomPopup from "./Custom/BottomPopup";
+import FloatingBlobs from "./Custom/FloatingBlobs";
 
 export default function Home() {
   const [theme, setTheme] = useState("matt");
@@ -31,6 +32,7 @@ export default function Home() {
       <Navbar />
 
       {/* Main Content */}
+      <FloatingBlobs />
       <main className="flex px-20 h-screen pt-[60px]">
         <div id="left" className="w-[45%] h-full flex flex-col justify-center">
           <div id="top" className="relative">

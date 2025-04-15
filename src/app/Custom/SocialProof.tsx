@@ -5,23 +5,27 @@ import React, { useState } from 'react'
 const socialProofImages = [
   {
     src: 'https://placehold.co/48x48',
-    testimonial:
-      'Matt completely transformed our online presence — web traffic doubled within weeks.',
+    name: 'Charlotte Cohen',
+    title: 'Founder, Willow Digital Studio',
+    testimonial: 'Matt completely transformed our online presence — web traffic doubled within weeks.',
   },
   {
     src: 'https://placehold.co/48x48',
-    testimonial:
-      'His UI/UX work is next-level. Clean, intuitive, and just *felt* right.',
+    name: 'Marcus Nguyen',
+    title: 'Marketing Director, Pixel & Pine',
+    testimonial: 'His UI/UX work is next-level. Clean, intuitive, and just *felt* right.',
   },
   {
     src: 'https://placehold.co/48x48',
-    testimonial:
-      'We handed Matt a mess — he gave us a brand. And a plan. And a site that actually works.',
+    name: 'Lena Jackson',
+    title: 'Creative Lead, Forge Studio',
+    testimonial: 'We handed Matt a mess — he gave us a brand. And a plan. And a site that actually works.',
   },
   {
     src: 'https://placehold.co/48x48',
-    testimonial:
-      'Matt’s marketing strategies weren’t just smart — they made us money.',
+    name: 'David Kim',
+    title: 'CEO, Conversion Works',
+    testimonial: 'Matt’s marketing strategies weren’t just smart — they made us money.',
   },
 ]
 
@@ -30,7 +34,7 @@ const SocialProof: React.FC = () => {
 
   return (
     <div className="flex items-center gap-4 relative">
-      {/* Social Proof Images */}
+      {/* Avatars */}
       <div className="flex -space-x-4">
         {socialProofImages.map((img, index) => (
           <div
@@ -41,7 +45,7 @@ const SocialProof: React.FC = () => {
           >
             <img
               src={img.src}
-              alt={`User ${index + 1}`}
+              alt={img.name}
               className={`w-12 h-12 rounded-full border-2 border-[#010101] object-cover transition-all duration-200 ease-in-out ${
                 hoveredIndex === index ? 'hover:-translate-y-1' : 'animate-bob'
               } ${
@@ -55,15 +59,27 @@ const SocialProof: React.FC = () => {
                     : 'animation-delay-900'
                   : ''
               }`}
-              
             />
 
-            {/* Chat Bubble */}
+            {/* Tooltip */}
             {hoveredIndex === index && (
-              <div className="absolute -top-24 left-1/2 -translate-x-1/2 z-10 w-56 bg-white text-black border border-black p-3 rounded-xl shadow-md leading-snug text-sm"
+              <div
+                className="absolute -top-32 left-1/2 -translate-x-1/2 z-10 w-64 bg-white text-black border border-black p-3 rounded-xl shadow-md leading-snug text-sm space-y-2"
                 style={{ fontFamily: 'var(--font-body)' }}
               >
-                {img.testimonial}
+                {/* Avatar + Name/Title */}
+                <div className="flex items-center space-x-3">
+                  <img src={img.src} alt={img.name} className="w-8 h-8 rounded-full border border-gray-300" />
+                  <div>
+                    <p className="font-semibold text-[13px]">{img.name}</p>
+                    <p className="text-xs text-gray-600">{img.title}</p>
+                  </div>
+                </div>
+
+                {/* Testimonial */}
+                <p className="text-xs mt-1">“{img.testimonial}”</p>
+
+                {/* Bubble tail */}
                 <div className="absolute bottom-[-6px] left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white border-l border-b border-black rotate-315" />
               </div>
             )}
@@ -71,7 +87,7 @@ const SocialProof: React.FC = () => {
         ))}
       </div>
 
-      {/* Social Proof Text */}
+      {/* Label */}
       <p
         className="text-sm text-[#A6A6A6] leading-[1.25em]"
         style={{ fontFamily: 'var(--font-body)' }}

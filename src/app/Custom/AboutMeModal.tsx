@@ -40,9 +40,9 @@ const AboutMeModal: React.FC<AboutMeModalProps> = ({ isOpen, onClose }) => {
 
   const fullIntro = `*System Boot Complete...
 
-Hi, I’m Matt Oltmanns — designer, developer, woodworker, and officially in "Level 2: Dad Mode."
+Hi, I’m Matt Oltmanns — designer, developer, nerd, and officially in "Level 2: Dad Mode."
 
-I live in Dubuque, Iowa with my amazing wife, our 9-year-old daughter Olivia, and our newest party member: Liam, our 4-month-old son.
+I live in Dubuque, Iowa with my amazing wife, our 8-year-old daughter Olivia, and our newest party member: Liam, our newborn son.
 
 By day, I craft websites, apps, and experiences with over 12 years of design/dev under my belt. By night? I’m either gaming, watching YouTube tutorials, or apparently my wife is making us take up hiking :/.
 
@@ -86,9 +86,9 @@ I love empathy-driven design, clever UI, and finding efficient solutions to prob
   if (!mounted || !isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm overflow-hidden">
       {/* CRT Scanlines */}
-      <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.06] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[length:100%_3px]" />
+      <div className="pointer-events-none fixed inset-0 z-40 opacity-[0.06] bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[length:100%_3px]" />
 
       {/* Main Modal */}
       <div className="relative z-50 w-full max-w-[750px] max-h-[95vh] overflow-y-auto overflow-x-hidden rounded-2xl bg-[#0a0a0a] text-[#baffc9] border border-[#3affca] p-6 sm:p-8 font-mono shadow-xl mx-4 scrollbar-thin">
@@ -211,22 +211,24 @@ I love empathy-driven design, clever UI, and finding efficient solutions to prob
         ))
       }
 
-{/* Fridge Magnets */}
-{booted && fridgeMagnets.map((magnet, i) => (
-  <div
-    key={i}
-    className={`fixed z-30 w-[72px] sm:w-[96px] md:w-[112px] pointer-events-none ${magnet.style}`}
-  >
-    <Image
-      src={magnet.src}
-      alt={magnet.alt}
-      width={128}
-      height={128}
-      className="object-contain w-full h-auto"
-    />
-  </div>
-))}
-
+      {/* Fridge Magnets */}
+      {booted && fridgeMagnets.map((magnet, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 3.5 + i * 0.2, duration: 0.4, ease: 'easeOut' }}
+          className={`fixed z-30 w-[72px] sm:w-[96px] md:w-[112px] pointer-events-none ${magnet.style}`}
+        >
+          <Image
+            src={magnet.src}
+            alt={magnet.alt}
+            width={128}
+            height={128}
+            className="object-contain w-full h-auto"
+          />
+        </motion.div>
+      ))}
     </div>
   )
 }

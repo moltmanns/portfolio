@@ -494,7 +494,6 @@ p.accented-o {
   transform: rotate(45deg);
 }
 
-/* globals.css */
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -511,6 +510,10 @@ p.accented-o {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #66ffc2;
+}
+
+.glow-on-hover:hover {
+  box-shadow: 0 0 10px #3affca, 0 0 20px #3affca;
 }
 
 

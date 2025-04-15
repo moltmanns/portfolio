@@ -116,10 +116,13 @@ const SkillsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
         lg:w-[800px] lg:h-[800px]
         ${winEffects ? 'animate-shake' : ''}
       `}>
+        {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-white bg-transparent border border-white rounded-full w-8 h-8 flex items-center justify-center text-lg hover:bg-white hover:text-black transition z-10 cursor-pointer"
-        >✕</button>
+          className="absolute top-3 right-3 text-sm border border-[#3affca] px-3 py-1 rounded-full hover:bg-[#3affca] hover:text-black transition cursor-pointer z-50"
+        >
+          EXIT
+        </button>
 
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           {vw > 640 && staticStars}
@@ -168,7 +171,7 @@ const SkillsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
                     setPositions(prev => prev.map((p, idx) => idx === i ? { ...p, removed: true } : p))
                   }, 800)
                 }}
-                className={`flex items-center justify-center px-3 py-2 ${skills[i].color} text-[#0d0d0d] shadow-md transition-all duration-300 ${hoveredIndex === i ? 'rounded-full w-auto' : 'w-10 h-10 sm:w-12 sm:h-12 rounded-full'} ${clickedIndices.includes(i) ? 'animate-laser-hit bg-lime-400 border-2 border-lime-300 ring-2 ring-lime-300 ring-inset animate-spin-slow' : ''}`}
+                className={`cursor-pointer flex items-center justify-center px-3 py-2 ${skills[i].color} text-[#0d0d0d] shadow-md transition-all duration-300 ${hoveredIndex === i ? 'rounded-full w-auto' : 'w-10 h-10 sm:w-12 sm:h-12 rounded-full'} ${clickedIndices.includes(i) ? 'animate-laser-hit bg-lime-400 border-2 border-lime-300 ring-2 ring-lime-300 ring-inset animate-spin-slow' : ''}`}
               >
                 {skills[i].icon}
                 {hoveredIndex === i && (

@@ -8,11 +8,11 @@ const ToastPopup: React.FC = () => {
   const [triggerExit, setTriggerExit] = useState(false)
 
   useEffect(() => {
-    // Don't show if already dismissed
-    // if (typeof window !== 'undefined') {
-    //   const hasClosed = localStorage.getItem('toast-dismissed')
-    //   if (hasClosed === 'true') return
-    // }
+
+    if (typeof window !== 'undefined') {
+      const hasClosed = localStorage.getItem('toast-dismissed')
+      if (hasClosed === 'true') return
+    }
 
     const timer = setTimeout(() => {
       setVisible(true)
