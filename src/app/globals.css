@@ -516,6 +516,11 @@ p.accented-o {
   box-shadow: 0 0 10px #3affca, 0 0 20px #3affca;
 }
 
+.all-unset {
+  all: unset;
+  display: block;
+}
+
 
 
 
