@@ -1,58 +1,54 @@
-import React, { useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { Switch } from "@/components/ui/switch"
-import {
-  FaDribbble,
-  FaLinkedin,
-  FaPinterest,
-  FaTwitter,
-  FaInstagram,
-  FaFacebook,
-} from "react-icons/fa"
-import SlideoutMenu from "./SlideoutMenu"
+'use client'
+
+import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { FiGrid } from 'react-icons/fi'
+import SlideoutMenu from './SlideoutMenu'
 
 const Navbar: React.FC = () => {
-  const [theme, setTheme] = useState("matt")
   const [menuOpen, setMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme)
-  }, [theme])
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
   const year = new Date().getFullYear()
-
   if (!mounted) return null
 
   return (
     <>
       {/* Navbar */}
-      <nav className="fixed top-0 w-full flex items-center justify-between px-12 h-[60px] bg-[#0D0B0C] border-b-[1px] border-[#373D3F] z-50">
-        {/* Left Side: Clickable Logo & Theme Toggle */}
-        <div className="flex items-center space-x-10">
+      <nav className="fixed top-0 w-full flex items-center justify-between px-4 sm:px-8 lg:px-12 h-[60px] bg-[#0D0B0C] border-b border-[#373D3F] z-50">
+        {/* Left: Logo + Year */}
+        <div className="flex items-center gap-4 sm:gap-6">
           <Link href="/" className="cursor-pointer">
-            <Image src="/assets/matto2.svg" alt="Site Logo" width={70} height={56} />
+            <Image
+              src="/assets/matto2.svg"
+              alt="Site Logo"
+              width={80}
+              height={60}
+              className="w-[70px] sm:w-[80px] h-auto"
+            />
           </Link>
-          <p className="text-sm">© 1990 - {year}</p>
+          <p className="text-xs sm:text-sm text-[#D9D9D9]">© 1990 - {year}</p>
         </div>
 
-        {/* Right Side: Project Link + Menu Button */}
-        <div className="flex items-center space-x-4">
+        {/* Right: Projects + Menu */}
+        <div className="flex items-center space-x-2 sm:space-x-4">
           <Link
             href="/Projects"
-            className="rounded-full px-4 py-1 text-sm text-[#ffffff] hover:text-[#4efcf0] transition"
+            aria-label="View Projects"
+            className="text-[#ffffff] hover:text-[#4efcf0] transition px-2 sm:px-3 py-1 rounded-full flex items-center"
           >
-            VIEW PROJECTS
+            <FiGrid className="block sm:hidden text-xl" />
+            <span className="hidden sm:inline text-xs sm:text-sm">VIEW PROJECTS</span>
           </Link>
 
           <button
             onClick={() => setMenuOpen(true)}
-            className="rounded-full px-4 py-1 border-2 text-sm text-[#0d0d0d] border-[#0d0d0d] bg-[#ffaedd] hover:bg-[#4efcf0] cursor-pointer"
+            className="text-xs sm:text-sm px-3 sm:px-4 py-1 border-2 border-[#0d0d0d] bg-[#ffaedd] text-[#0d0d0d] hover:bg-[#4efcf0] rounded-full transition-all whitespace-nowrap cursor-pointer"
           >
             BORING STUFF
           </button>

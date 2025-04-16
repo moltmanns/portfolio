@@ -4,6 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { SiFigma, SiReact, SiTailwindcss } from 'react-icons/si'
+import { FaGithub } from 'react-icons/fa'
 import Navbar from '@/app/Custom/Navbar'
 
 const tools = [
@@ -101,9 +102,10 @@ export default function CaseStudyPage() {
                 href="https://github.com/moltmanns/doobq-mobile-app"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-4 py-2 border border-[#3affca] rounded-full text-xs text-[#3affca] hover:bg-[#3affca] hover:text-black transition-all duration-200 glow-on-hover"
+                className="inline-flex items-center gap-2 px-4 py-2 border border-[#3affca] rounded-full text-xs text-[#3affca] hover:bg-[#3affca] hover:text-black transition-all duration-200 glow-on-hover"
               >
-                View GitHub Repo
+                <FaGithub className="text-sm" />
+                GitHub Repo
               </a>
             </div>
           </motion.div>
@@ -138,13 +140,18 @@ export default function CaseStudyPage() {
                     key={i}
                     className="rounded-lg overflow-hidden border border-[#2f2f2f] shadow-md"
                   >
-                    <Image
-                      src={src}
-                      alt={`Screenshot ${groupIndex}-${i}`}
-                      width={1600}
-                      height={1000}
-                      className="w-full h-auto object-contain"
-                    />
+                  <Image
+                    src={src}
+                    alt={`Screenshot ${groupIndex}-${i}`}
+                    fill={false}
+                    width={src.includes('user-flow') ? 2400 : 1600}
+                    height={1000}
+                    quality={100}
+                    sizes="100vw"
+                    className="w-full h-auto object-cover rounded-lg"
+                  />
+
+
                   </div>
                 ))}
               </motion.div>
