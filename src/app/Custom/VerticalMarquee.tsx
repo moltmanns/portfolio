@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const images = [
   { src: "/assets/projects/flexsteel-website-thumbnail-2.jpg", link: "./Projects/Flexsteel", width: 488, height: 315 },
-  { src: "https://placehold.co/488x315", link: "https://example.com/2", width: 488, height: 315 },
+  { src: "/assets/projects/lootvault-website-thumbnail.jpg", link: "./Projects/LootVault", width: 488, height: 315 },
   { src: "/assets/projects/doobq-app-design.jpg", link: "./Projects/DooBQ", width: 488, height: 455 },
   { src: "/assets/projects/instylr-app-thumbnail.jpg", link: "./Projects/Instylr", width: 488, height: 375 },
   { src: "https://placehold.co/488x315", link: "https://example.com/5", width: 488, height: 315 },

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Schoolbell } from "next/font/google";
 import { Walter_Turncoat } from "next/font/google";
 import ToastPopup from "./Custom/ToastPopup";
+import ChatBubbleToggle from "@/components/ui/ChatBot/ChatBubbleToggle";
 
 const schoolbell = Schoolbell({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+      <ChatBubbleToggle />
           {children}
         <ToastPopup />
       </body>

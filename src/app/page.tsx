@@ -12,16 +12,16 @@ export default function Home() {
       <Navbar />
       <FloatingBlobs />
 
-      <main className="flex flex-col lg:flex-row px-6 sm:px-8 md:px-16 lg:px-20 pt-[60px] min-h-screen">
+      <main className="flex flex-col lg:flex-row px-6 sm:px-8 md:px-16 lg:px-20 min-h-[calc(100vh-60px)]">
         {/* Left Side */}
-        <div className="w-full lg:w-[45%] flex flex-col justify-center pt-12 lg:pt-0 pb-10">
+        <div className="w-full lg:w-[45%] flex flex-col justify-center pt-[60px]">
           <div className="relative">
             {/* Accented top-left */}
             <p className="accented absolute -top-4 -left-6 text-lg sm:text-xl lg:text-2xl">
               Iowa’s Finest (Web Designer, Not Corn)
             </p>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold uppercase mb-16 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-[8.75rem] font-bold uppercase mb-16 leading-[0.85em]">
               Web Design. UIUX. Product Strategy.
             </h1>
 

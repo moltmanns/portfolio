@@ -9,8 +9,8 @@ import Navbar from '@/app/Custom/Navbar'
 
 const tools = [
   { name: 'Figma', icon: <SiFigma /> },
-  { name: 'React', icon: <SiReact /> },
-  { name: 'Tailwind', icon: <SiTailwindcss /> },
+  { name: 'React Native', icon: <SiReact /> },
+  { name: 'TailwindCSS', icon: <SiTailwindcss /> },
 ]
 
 const images = [

@@ -27,9 +27,9 @@ const Navbar: React.FC = () => {
             <Image
               src="/assets/matto2.svg"
               alt="Site Logo"
-              width={80}
-              height={60}
-              className="w-[70px] sm:w-[80px] h-auto"
+              width={60}
+              height={40}
+              className="w-[60px] sm:w-[80px] h-auto"
             />
           </Link>
           <p className="text-xs sm:text-sm text-[#D9D9D9]">© 1990 - {year}</p>

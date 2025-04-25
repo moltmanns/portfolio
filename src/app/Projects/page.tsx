@@ -9,7 +9,7 @@ const projects = [
   { src: "https://placehold.co/800x500", link: "https://example.com/2", title: "Placeholder External" },
   { src: "/assets/projects/doobq-app-design.jpg", link: "/Projects/DooBQ", title: "DooBQ App Design" },
   { src: "/assets/projects/instylr-app-thumbnail.jpg", link: "/Projects/Instylr", title: "Instylr App" },
-  { src: "https://placehold.co/800x500", link: "https://example.com/5", title: "Another External" },
+  { src: "/assets/projects/lootvault-website-thumbnail.jpg", link: "/Projects/LootVault", title: "LootVault WebApp" },
   { src: "/assets/projects/dejurify-saas-thumbnail.jpg", link: "/Projects/Dejurify", title: "Dejurify SaaS" },
   { src: "/assets/projects/poopit-ecommerce-website-thumbnail.jpg", link: "https://poopitnbrowntown.com/", title: "PoopIt E-Commerce", newTab: true },
   { src: "/assets/projects/culbies-website-thumbnail.jpg", link: "https://culbieseventcenter.com/", title: "Culbies Website", newTab: true },
@@ -21,7 +21,7 @@ export default function ProjectsPage() {
     <>
       <Navbar />
       <div className="max-w-7xl mx-auto px-4 pt-28 pb-16">
-        <h1 className="text-2xl md:text-3xl font-bold mb-10 text-center tracking-tight">
+        <h1 className="text-2xl md:text-3xl font-bold mb-10 tracking-tight">
           Explore Projects
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
