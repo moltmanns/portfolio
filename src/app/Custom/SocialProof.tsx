@@ -4,25 +4,25 @@ import React, { useState } from 'react'
 
 const socialProofImages = [
   {
-    src: 'https://placehold.co/48x48',
+    src: './assets/profilepic1.jpg',
     name: 'Charlotte Cohen',
     title: 'Founder, Willow Digital Studio',
     testimonial: 'Matt completely transformed our online presence — web traffic doubled within weeks.',
   },
   {
-    src: 'https://placehold.co/48x48',
+    src: './assets/pixelpine-logo.jpg',
     name: 'Marcus Nguyen',
     title: 'Marketing Director, Pixel & Pine',
     testimonial: 'His UI/UX work is next-level. Clean, intuitive, and just *felt* right.',
   },
   {
-    src: 'https://placehold.co/48x48',
+    src: './assets/profilepic3.jpg',
     name: 'Lena Jackson',
     title: 'Creative Lead, Forge Studio',
     testimonial: 'We handed Matt a mess — he gave us a brand. And a plan. And a site that actually works.',
   },
   {
-    src: 'https://placehold.co/48x48',
+    src: './assets/profilepic4.jpg',
     name: 'David Kim',
     title: 'CEO, Conversion Works',
     testimonial: 'Matt’s marketing strategies weren’t just smart — they made us money.',
@@ -46,7 +46,7 @@ const SocialProof: React.FC = () => {
             <img
               src={img.src}
               alt={img.name}
-              className={`w-12 h-12 rounded-full border-2 border-[#010101] object-cover transition-all duration-200 ease-in-out ${
+              className={`w-12 h-12 rounded-full border border-[#010101] object-cover transition-all duration-200 ease-in-out ${
                 hoveredIndex === index ? 'hover:-translate-y-1' : 'animate-bob'
               } ${
                 hoveredIndex !== index

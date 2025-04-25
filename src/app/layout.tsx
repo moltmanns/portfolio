@@ -19,7 +19,7 @@ const walterTurncoat = Walter_Turncoat({
 });
 
 export const metadata: Metadata = {
-  title: "Portfoliolioliolio | Matt O.",
+  title: "Portfolioliolio | Matt O.",
   description: "Built this with my main squeeze React",
 };
 

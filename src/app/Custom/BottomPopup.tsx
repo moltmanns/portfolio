@@ -10,16 +10,12 @@ const BottomPopup: React.FC = () => {
   const [isExiting, setIsExiting] = useState(false)
 
   useEffect(() => {
-    // Show popup after 10 seconds
     const showTimer = setTimeout(() => {
       setShowImage(true)
       setShowBubble(true)
 
-      // Hide popup after 15 seconds
       const hideTimer = setTimeout(() => {
         setIsExiting(true)
-
-        // Wait for slide-down animation to finish, then fully hide
         setTimeout(() => {
           setShowImage(false)
           setShowBubble(false)
@@ -47,7 +43,7 @@ const BottomPopup: React.FC = () => {
           {/* Chat Bubble */}
           {showBubble && (
             <div
-              className="absolute -top-7 -left-0 z-10 w-56 bg-white text-black border border-black p-4 rounded-xl shadow-md leading-snug text-sm"
+              className="absolute -top-20 sm:-top-7 left-0 z-10 w-56 bg-white text-black border border-black p-4 rounded-xl shadow-md leading-snug text-sm"
               style={{ fontFamily: 'var(--font-body)' }}
             >
               {isExiting
@@ -57,14 +53,15 @@ const BottomPopup: React.FC = () => {
             </div>
           )}
 
+
           {/* Matt on a T-Rex */}
           <Image
             src="/assets/me-illustrated-riding-a-freaking-trex-baby.webp"
             alt="Matt Oltmanns riding a T-Rex"
             width={300}
             height={250}
-            className="w-auto h-auto"
             priority
+            className="w-[240px] sm:w-[280px] md:w-[300px] h-auto transition-all duration-300"
           />
         </motion.div>
       )}

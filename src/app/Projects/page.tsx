@@ -6,14 +6,14 @@ import Navbar from '../Custom/Navbar'
 
 const projects = [
   { src: "/assets/projects/flexsteel-website-thumbnail-2.jpg", link: "/Projects/Flexsteel", title: "Flexsteel Website" },
-  { src: "https://placehold.co/800x500", link: "https://example.com/2", title: "Placeholder External" },
-  { src: "/assets/projects/doobq-app-design.jpg", link: "/Projects/DooBQ", title: "DooBQ App Design" },
-  { src: "/assets/projects/instylr-app-thumbnail.jpg", link: "/Projects/Instylr", title: "Instylr App" },
+  { src: "/assets/projects/doobq-app-design.jpg", link: "/Projects/DooBQ", title: "DooBQ Tourism App Design" },
+  { src: "/assets/projects/instylr-app-thumbnail.jpg", link: "/Projects/Instylr", title: "Instylr WebApp" },
   { src: "/assets/projects/lootvault-website-thumbnail.jpg", link: "/Projects/LootVault", title: "LootVault WebApp" },
   { src: "/assets/projects/dejurify-saas-thumbnail.jpg", link: "/Projects/Dejurify", title: "Dejurify SaaS" },
-  { src: "/assets/projects/poopit-ecommerce-website-thumbnail.jpg", link: "https://poopitnbrowntown.com/", title: "PoopIt E-Commerce", newTab: true },
-  { src: "/assets/projects/culbies-website-thumbnail.jpg", link: "https://culbieseventcenter.com/", title: "Culbies Website", newTab: true },
-  { src: "/assets/projects/bridgebr-website-thumbnail.jpg", link: "https://bridgebr.com/", title: "BridgeBR", newTab: true },
+  { src: "/assets/projects/poopit-ecommerce-website-thumbnail.jpg", link: "https://poopitnbrowntown.com/", title: "PoopIt E-Commerce Website", newTab: true },
+  { src: "/assets/projects/culbies-website-thumbnail.jpg", link: "https://culbieseventcenter.com/", title: "Culbie's Website", newTab: true },
+  { src: "/assets/projects/bridgebr-website-thumbnail.jpg", link: "https://bridgebr.com/", title: "BridgeBR Website", newTab: true },
+  { src: "/assets/projects/scm-website-thumbnail.jpg", link: "https://sleepycowmedia.com", title: "Sleepy Cow Media Website" },
 ]
 
 export default function ProjectsPage() {
@@ -21,7 +21,7 @@ export default function ProjectsPage() {
     <>
       <Navbar />
       <div className="max-w-7xl mx-auto px-4 pt-28 pb-16">
-        <h1 className="text-2xl md:text-3xl font-bold mb-10 tracking-tight">
+        <h1 className="text-2xl md:text-4xl font-bold mb-10 text-white">
           Explore Projects
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -54,7 +54,7 @@ export default function ProjectsPage() {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="text-base md:text-lg font-semibold text-white group-hover:text-[#4efcf0] transition">
+                  <h3 className="text-base md:text-base text-white group-hover:text-[#4efcf0] transition">
                     {item.title}
                   </h3>
                 </div>
