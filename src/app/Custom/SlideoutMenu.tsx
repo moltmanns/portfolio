@@ -10,8 +10,8 @@ import {
   FaTwitter,
   FaLinkedin,
   FaFacebook,
-  FaPinterest,
   FaDribbble,
+  FaYoutube,
 } from 'react-icons/fa'
 
 export default function SlideoutMenu({
@@ -105,12 +105,12 @@ export default function SlideoutMenu({
               <div className="mt-auto">
                 <p className="text-sm mb-4 flex justify-center">Follow Me? Maybe?!</p>
                 <div className="flex justify-center space-x-8 text-xl mb-4">
-                  <a href="https://dribbble.com" target="_blank" rel="noreferrer"><FaDribbble /></a>
-                  <a href="https://linkedin.com" target="_blank" rel="noreferrer"><FaLinkedin /></a>
-                  <a href="https://pinterest.com" target="_blank" rel="noreferrer"><FaPinterest /></a>
-                  <a href="https://twitter.com" target="_blank" rel="noreferrer"><FaTwitter /></a>
-                  <a href="https://instagram.com" target="_blank" rel="noreferrer"><FaInstagram /></a>
-                  <a href="https://facebook.com" target="_blank" rel="noreferrer"><FaFacebook /></a>
+                  <a href="https://dribbble.com/sleepycowmedia" target="_blank" rel="noreferrer"><FaDribbble /></a>
+                  <a href="https://www.linkedin.com/in/matt-oltmanns/" target="_blank" rel="noreferrer"><FaLinkedin /></a>
+                  <a href="https://www.youtube.com/channel/UCliUWLimbJMeR0oWoUrsB1w?sub_confirmation=1" target="_blank" rel="noreferrer"><FaYoutube /></a>
+                  <a href="https://twitter.com/media_sleepy" target="_blank" rel="noreferrer"><FaTwitter /></a>
+                  <a href="https://www.instagram.com/sleepycowmedia/" target="_blank" rel="noreferrer"><FaInstagram /></a>
+                  <a href="https://www.facebook.com/sleepycowmedia" target="_blank" rel="noreferrer"><FaFacebook /></a>
                 </div>
               </div>
             </motion.div>
