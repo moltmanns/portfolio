@@ -34,7 +34,8 @@ export default function NotFoundClient() {
       if (i > fullText.length) clearInterval(interval)
     }, 20)
     return () => clearInterval(interval)
-  }, [mounted])
+  }, [mounted, fullText])
+  
 
   if (!mounted) return null
 

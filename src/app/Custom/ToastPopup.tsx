@@ -67,8 +67,8 @@ const ToastPopup: React.FC = () => {
 
           {/* Message */}
           <p className="my-5 leading-snug">
-            👋 Just wanted to say hey and welcome... No cookies here though — shame you'd like my welcome email.
-          </p>
+              👋 Just wanted to say hey and welcome... No cookies here though — shame you&apos;d like my welcome email.
+            </p>
 
           {/* Buttons */}
           <div className="flex justify-end gap-3">

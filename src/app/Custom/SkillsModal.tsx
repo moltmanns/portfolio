@@ -41,7 +41,7 @@ const SkillsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
       removed: false,
       clicked: false,
     }
-  }), [vw, vh])
+  }), []) // ✅ fixed useMemo: no vw/vh deps
 
   const [positions, setPositions] = useState(initialPositions)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
@@ -62,14 +62,20 @@ const SkillsModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
     const move = () => {
       setPositions(prev => prev.map((pos, i) => {
         if (hoveredIndex === i || pos.removed) return pos
-        let { x, y, dx, dy, startedFloating } = pos
+
+        const { x, y, startedFloating } = pos
+        let { dx, dy } = pos
+
+
         if (!startedFloating) return { ...pos, startedFloating: true }
         if (x > vw / 2 - 40 || x < -vw / 2 + 40) dx = -dx
         if (y > vh / 2 - 40 || y < -vh / 2 + 40) dy = -dy
+
         return { ...pos, x: x + dx, y: y + dy, dx, dy }
       }))
       animationFrame = requestAnimationFrame(move)
     }
+
     animationFrame = requestAnimationFrame(move)
     return () => cancelAnimationFrame(animationFrame)
   }, [vw, vh, hoveredIndex])

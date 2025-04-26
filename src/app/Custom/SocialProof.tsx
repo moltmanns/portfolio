@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import Image from 'next/image'
 
 const socialProofImages = [
   {
@@ -43,9 +44,11 @@ const SocialProof: React.FC = () => {
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            <img
+            <Image
               src={img.src}
               alt={img.name}
+              width={48}
+              height={48}
               className={`w-12 h-12 rounded-full border border-[#010101] object-cover transition-all duration-200 ease-in-out ${
                 hoveredIndex === index ? 'hover:-translate-y-1' : 'animate-bob'
               } ${
@@ -61,6 +64,7 @@ const SocialProof: React.FC = () => {
               }`}
             />
 
+
             {/* Tooltip */}
             {hoveredIndex === index && (
               <div
@@ -69,7 +73,14 @@ const SocialProof: React.FC = () => {
               >
                 {/* Avatar + Name/Title */}
                 <div className="flex items-center space-x-3">
-                  <img src={img.src} alt={img.name} className="w-8 h-8 rounded-full border border-gray-300" />
+                <Image
+                    src={img.src}
+                    alt={img.name}
+                    width={32}
+                    height={32}
+                    className="w-8 h-8 rounded-full border border-gray-300"
+                  />
+
                   <div>
                     <p className="font-semibold text-[13px]">{img.name}</p>
                     <p className="text-xs text-gray-600">{img.title}</p>

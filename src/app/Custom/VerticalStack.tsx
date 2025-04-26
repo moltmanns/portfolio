@@ -2,6 +2,15 @@
 import React from 'react'
 import Image from 'next/image'
 
+interface StackedImage {
+  src: string
+  link: string
+  width: number
+  height: number
+  newTab?: boolean
+}
+
+
 const images = [
   { src: "/assets/projects/flexsteel-website-thumbnail-2.jpg", link: "./Projects/Flexsteel", width: 488, height: 315 },
   { src: "/assets/projects/lootvault-website-thumbnail.jpg", link: "./Projects/LootVault", width: 488, height: 315 },
@@ -16,7 +25,7 @@ const images = [
 ]
 
 const VerticalStack: React.FC = () => {
-  const renderImage = (item: any, index: number) => {
+  const renderImage = (item: StackedImage, index: number) => {
     const isInternal = item.link.startsWith("./")
     return (
       <a
@@ -40,7 +49,7 @@ const VerticalStack: React.FC = () => {
             height={item.height}
             className="object-cover w-full h-full transition duration-300 group-hover:brightness-90"
             priority={index < 5}
-            unoptimized={!item.src.startsWith('/') && !item.local}
+            unoptimized={!item.src.startsWith('/')}
           />
         </div>
       </a>

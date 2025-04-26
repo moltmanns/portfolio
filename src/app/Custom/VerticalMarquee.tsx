@@ -2,6 +2,14 @@
 import React from 'react'
 import Image from 'next/image'
 
+interface MarqueeImage {
+  src: string
+  link: string
+  width: number
+  height: number
+  newTab?: boolean
+}
+
 const images = [
   { src: "/assets/projects/flexsteel-website-thumbnail-2.jpg", link: "./Projects/Flexsteel", width: 488, height: 315 },
   { src: "/assets/projects/lootvault-website-thumbnail.jpg", link: "./Projects/LootVault", width: 488, height: 315 },
@@ -19,7 +27,7 @@ const images2 = [
 ]
 
 const VerticalMarquee: React.FC = () => {
-  const renderImage = (item: any, index: number, direction: 'up' | 'down') => {
+  const renderImage = (item: MarqueeImage, index: number, direction: 'up' | 'down') => {
     const isInternal = item.link.startsWith("./")
     return (
       <a
@@ -43,12 +51,14 @@ const VerticalMarquee: React.FC = () => {
             height={item.height}
             className="object-cover"
             priority={index < 5}
-            unoptimized={!item.src.startsWith('/') && !item.local}
+            unoptimized={!item.src.startsWith('/')}
           />
+
         </div>
       </a>
     )
   }
+  
 
   return (
     <div className="flex gap-4 overflow-hidden h-screen">

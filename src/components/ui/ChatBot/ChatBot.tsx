@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { X } from 'lucide-react'
 import { botResponses } from './botResponses'
 import Image from 'next/image'
 

@@ -25,17 +25,17 @@ const images = [
   {
     src: '/assets/lootvault/lootvault-img3.jpg',
     title: 'Weekly Sessions/Current GM',
-    description: 'As a Dungeon Master running weekly sessions, my players love exploring city life and often stray from the main quest. No matter how much I nudge them back, they’re always chasing side quests and asking what’s happening in town. It all started when they asked to build their own fort—and now city content is a must.'
+    description: "As a Dungeon Master running weekly sessions, my players love exploring city life and often stray from the main quest. No matter how much I nudge them back, they're always chasing side quests and asking what's happening in town. It all started when they asked to build their own fort—and now city content is a must."
   },
   {
     src: '/assets/lootvault/lootvault-img4.jpg',
     title: 'Terrain Builder',
-    description: 'I’ve spent years crafting physical terrain for our sessions, and I wanted the same level of creativity and customization in our digital tools. With LootVault, I can theme our party’s home base, switch out fort styles, and add story-rich flavor that ties directly into our campaign map. It’s a visual storytelling boost I didn’t know I was missing.'
+    description: "I've spent years crafting physical terrain for our sessions, and I wanted the same level of creativity and customization in our digital tools. With LootVault, I can theme our party's home base, switch out fort styles, and add story-rich flavor that ties directly into our campaign map. It's a visual storytelling boost I didn't know I was missing."
   },
   {
     src: '/assets/lootvault/lootvault-img5.jpg',
     title: 'Whole Family Gaming',
-    description: 'My daughter wants to join our games now, and having a friendly, accessible interface means the whole family can get involved. Whether it’s sorting loot, naming items, or pillaging the vault, everything is intuitive. It’s designed to bring people into the game, regardless of age or experience—with UX that respects both seasoned players and newcomers.'
+    description: "My daughter wants to join our games now, and having a friendly, accessible interface means the whole family can get involved. Whether it's sorting loot, naming items, or pillaging the vault, everything is intuitive. It's designed to bring people into the game, regardless of age or experience—with UX that respects both seasoned players and newcomers."
   },
   {
     src: '/assets/lootvault/lootvault-img6.jpg',
@@ -45,12 +45,12 @@ const images = [
   {
     src: '/assets/lootvault/lootvault-img7.jpg',
     title: 'Easy, Editable Inventory List',
-    description: 'Quickly add, edit, or remove loot in real-time—no more scribbled notes or forgotten items. Keep your party’s treasure organized and ready to go.'
+    description: "Quickly add, edit, or remove loot in real-time—no more scribbled notes or forgotten items. Keep your party's treasure organized and ready to go."
   },
   {
     src: '/assets/lootvault/lootvault-img8.jpg',
     title: 'Responsive User Menu',
-    description: 'A clean, mobile-first interface means you can manage loot, navigate your world, and adjust settings seamlessly whether you’re at the table or on the go.'
+    description: "A clean, mobile-first interface means you can manage loot, navigate your world, and adjust settings seamlessly whether you're at the table or on the go."
   },
   {
     src: '/assets/lootvault/lootvault-img9.jpg',
@@ -85,7 +85,7 @@ export default function CaseStudyPage() {
             <div className="text-3xl text-[#ffffff] font-bold uppercase mb-1" role="heading" aria-level={1}>
               LootVault
             </div>
-            <p className='text-sm'>Simplifying Party Inventory & Player-Driven Worldbuilding</p>
+            <p className='text-sm'>Simplifying Party Inventory &amp; Player-Driven Worldbuilding</p>
 
             <div className="flex flex-wrap gap-3 text-2xl text-[#7efcd2] mb-12">
               {tools.map((tool, i) => (
@@ -103,7 +103,7 @@ export default function CaseStudyPage() {
             <div>
               <div className="text-sm font-bold uppercase text-[#f2f2f2]">OVERVIEW</div>
               <p className="text-sm mt-2 leading-relaxed text-[#a6a6a6]">
-                A mobile-friendly D&D Loot & City Builder for players and GMs. Manage loot, track party funds, and build upgradeable cities with streamlined navigation and a clean UI.
+                A mobile-friendly D&amp;D Loot &amp; City Builder for players and GMs. Manage loot, track party funds, and build upgradeable cities with streamlined navigation and a clean UI.
               </p>
             </div>
 
@@ -124,21 +124,21 @@ export default function CaseStudyPage() {
             <div>
               <div className="text-sm font-bold uppercase text-[#f2f2f2]">RESEARCH</div>
               <p className="text-sm mt-2 leading-relaxed text-[#a6a6a6]">
-              As a longtime D&D player, new GM, and terrain nerd, I am building LootVault to bring hands-on worldbuilding to the screen. It will let players track loot, build cities, and stay immersed in the game.
+                As a longtime D&amp;D player, new GM, and terrain nerd, I am building LootVault to bring hands-on worldbuilding to the screen. It will let players track loot, build cities, and stay immersed in the game.
               </p>
             </div>
 
             <div>
               <div className="text-sm font-bold uppercase text-[#f2f2f2]">DATA DECISIONS/NEXT STEPS</div>
               <p className="text-sm mt-2 leading-relaxed text-[#a6a6a6]">
-              LootVault focuses on speed and usability for smooth gameplay across all devices. Its inclusive design keeps it accessible to all players and GMs, making sessions faster, easier, and more immersive.
+                LootVault focuses on speed and usability for smooth gameplay across all devices. Its inclusive design keeps it accessible to all players and GMs, making sessions faster, easier, and more immersive.
               </p>
             </div>
 
             <div>
               <div className="text-sm font-bold uppercase text-[#f2f2f2]">CONCLUSION</div>
               <p className="text-sm mt-2 leading-relaxed text-[#a6a6a6]">
-              LootVault aims to level up tabletop RPGs with immersive, customizable tools for loot, fort-building, and storytelling. It empowers players to shape their world and gives GMs powerful tools to spark creativity.
+                LootVault aims to level up tabletop RPGs with immersive, customizable tools for loot, fort-building, and storytelling. It empowers players to shape their world and gives GMs powerful tools to spark creativity.
               </p>
             </div>
 
@@ -166,7 +166,7 @@ export default function CaseStudyPage() {
 
         <main className="flex-1 max-h-[calc(100vh-60px)] lg:overflow-y-auto py-10 px-6 space-y-10">
           <div className="space-y-10">
-            {[
+            {[ 
               [images[0], images[1]],
               [images[2], images[3], images[4]],
               [images[5], images[6]],

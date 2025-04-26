@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { SiBootstrap, SiFigma, SiNextdotjs, SiReact, SiShopify, SiTailwindcss } from 'react-icons/si'
+import { SiFigma, SiNextdotjs, SiReact, SiShopify, SiTailwindcss } from 'react-icons/si'
 import { FaGithub } from 'react-icons/fa'
 import Navbar from '@/app/Custom/Navbar'
 
@@ -47,7 +47,7 @@ const images = [
   {
     src: '/assets/instylr/instylr-img7.jpg',
     title: 'Quick, Add All to Cart',
-    description: 'Don’t want to go one by one and love the entire look, this gathers all products in the image to purchase easily.'
+    description: 'Don&apos;t want to go one by one and love the entire look, this gathers all products in the image to purchase easily.'
   },
   {
     src: '/assets/instylr/instylr-img8.jpg',
@@ -56,15 +56,15 @@ const images = [
   },
   {
     src: '/assets/instylr/instylr-img9.jpg',
-    alt: 'page section'
+    title: 'Simple Page Tool'
   },
   {
     src: '/assets/instylr/instylr-img10.jpg',
-    alt: 'page section'
+    title: 'Footer CTA'
   },
   {
     src: '/assets/instylr/instylr-img12.jpg',
-    alt: 'page section'
+    title: 'Featured Sections'
   }
 ]
 
@@ -137,7 +137,7 @@ export default function CaseStudyPage() {
             <div>
               <div className="text-sm font-bold uppercase text-[#f2f2f2]">CONCLUSION</div>
               <p className="text-sm mt-2 leading-relaxed text-[#a6a6a6]">
-              I’m excited to keep building this project — it has the potential to reshape how online stores use AI beyond gimmicks. This could be the next evolution of real-world AI in e-commerce.
+              I&apos;m excited to keep building this project — it has the potential to reshape how online stores use AI beyond gimmicks. This could be the next evolution of real-world AI in e-commerce.
               </p>
             </div>
 

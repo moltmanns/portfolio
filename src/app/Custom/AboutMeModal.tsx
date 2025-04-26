@@ -48,40 +48,41 @@ By day, I craft websites, apps, and experiences with over 12 years of design/dev
 
 I love empathy-driven design, clever UI, and finding efficient solutions to problems most businesses just live with. My brain is: 50% design tricks, 30% “Dad, can I have a snack?”, and 20% 90s arcade games.`
 
-  useEffect(() => {
-    setMounted(true)
-    const handleResize = () => setIsMobile(window.innerWidth <= 786)
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+useEffect(() => {
+  setMounted(true)
+  const handleResize = () => setIsMobile(window.innerWidth <= 786)
+  handleResize()
+  window.addEventListener('resize', handleResize)
+  return () => window.removeEventListener('resize', handleResize)
+}, [])
 
-  useEffect(() => {
-    if (isOpen && mounted) {
-      const audio = new Audio('./assets/sounds/gamestart-272829.mp3')
-      audio.volume = 0.4
-      audio.play()
-    }
-  }, [isOpen, mounted])
+useEffect(() => {
+  if (isOpen && mounted) {
+    const audio = new Audio('./assets/sounds/gamestart-272829.mp3')
+    audio.volume = 0.4
+    audio.play()
+  }
+}, [isOpen, mounted])
 
-  useEffect(() => {
-    if (!isOpen) {
-      setBooted(false)
-      setTypedText('')
-    } else {
-      const bootTimer = setTimeout(() => setBooted(true), 2500)
-      return () => clearTimeout(bootTimer)
-    }
-  }, [isOpen])
+useEffect(() => {
+  if (!isOpen) {
+    setBooted(false)
+    setTypedText('')
+  } else {
+    const bootTimer = setTimeout(() => setBooted(true), 2500)
+    return () => clearTimeout(bootTimer)
+  }
+}, [isOpen])
 
-  useEffect(() => {
-    if (booted && typedText.length < fullIntro.length) {
-      const typeTimer = setTimeout(() => {
-        setTypedText(fullIntro.slice(0, typedText.length + 1))
-      }, 45)
-      return () => clearTimeout(typeTimer)
-    }
-  }, [typedText, booted])
+useEffect(() => {
+  if (booted && typedText.length < fullIntro.length) {
+    const typeTimer = setTimeout(() => {
+      setTypedText(fullIntro.slice(0, typedText.length + 1))
+    }, 45)
+    return () => clearTimeout(typeTimer)
+  }
+}, [typedText, booted, fullIntro])
+
 
   if (!mounted || !isOpen) return null
 

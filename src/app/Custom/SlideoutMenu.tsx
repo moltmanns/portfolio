@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import Modal from './Modal'
 import SkillsModal from './SkillsModal'
 import AboutMeModal from './AboutMeModal'
 import ContactModal from './ContactModal'
@@ -22,32 +21,25 @@ export default function SlideoutMenu({
   isOpen: boolean
   onClose: () => void
 }) {
-  const [activeModal, setActiveModal] = useState<null | 'services'>(null)
   const [showSkillsModal, setShowSkillsModal] = useState(false)
   const [showAboutMeModal, setShowAboutMeModal] = useState(false)
   const [showContactModal, setShowContactModal] = useState(false)
-
-  const openModal = (type: typeof activeModal) => {
-    setActiveModal(type)
-    onClose()
-  }
-
+  
   const handleOpenSkills = () => {
     setShowSkillsModal(true)
     onClose()
   }
-
+  
   const handleOpenAbout = () => {
     setShowAboutMeModal(true)
     onClose()
   }
-
+  
   const handleOpenContact = () => {
     setShowContactModal(true)
     onClose()
   }
-
-  const closeModal = () => setActiveModal(null)
+  
 
   return (
     <>

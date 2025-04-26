@@ -3,8 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { SiBootstrap, SiFigma, SiShopify, SiTailwindcss } from 'react-icons/si'
-import { FaGithub } from 'react-icons/fa'
+import { SiBootstrap, SiFigma, SiShopify, } from 'react-icons/si'
 import Navbar from '@/app/Custom/Navbar'
 
 const tools = [
@@ -36,12 +35,15 @@ const images = [
   },
   {
     src: '/assets/flexsteel/flexsteel-img5.jpg',
+    title: 'Desktop Breakpoint'
   },
   {
     src: '/assets/flexsteel/flexsteel-img6.jpg',
+    title: 'Tablet Breakpoint'
   },
   {
     src: '/assets/flexsteel/flexsteel-img7.jpg',
+    title: 'Mobile Breakpoint'
   },
   {
     src: '/assets/flexsteel/flexsteel-img8.jpg',
@@ -88,6 +90,7 @@ const images = [
   },
   {
     src: '/assets/flexsteel/flexsteel-img17.jpg',
+    title: 'Full App Design Flow'
   },
 ]
 
@@ -165,25 +168,6 @@ export default function CaseStudyPage() {
               Post-launch, mobile traffic grew by 31.4%, retailer locator usage rose 27%, organic search improved 121%, and the mobile app saw strong adoption. Positive user feedback confirmed major UX gains. Ongoing SEO and exploring AR features are recommended next steps.
               </p>
             </div>
-
-            {/* <div className="pt-8 flex flex-col sm:flex-row sm:items-center sm:gap-4 w-full">
-              <a
-                href="https://flexsteel.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-4 py-2 border border-[#3affca] rounded-full text-xs text-[#3affca] hover:bg-[#3affca] hover:text-black transition-all duration-200 glow-on-hover w-full sm:w-auto"
-              >
-                Flexsteel Website
-              </a>
-              <a
-                href="https://flexsteelstore.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-4 py-2 border border-[#3affca] rounded-full text-xs text-[#3affca] hover:bg-[#3affca] hover:text-black transition-all duration-200 glow-on-hover w-full sm:w-auto"
-              >
-                Flexsteel Store Website
-              </a>
-            </div> */}
           </motion.div>
         </aside>
 
