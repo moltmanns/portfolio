@@ -5,28 +5,28 @@ import Image from 'next/image'
 
 const socialProofImages = [
   {
-    src: './assets/profilepic1.jpg',
+    src: '/assets/profilepic1.jpg',
     name: 'Charlotte Cohen',
     title: 'Founder, Willow Digital Studio',
     testimonial: 'Matt completely transformed our online presence — web traffic doubled within weeks.',
   },
   {
-    src: './assets/pixelpine-logo.jpg',
+    src: '/assets/pixelpine-logo.jpg',
     name: 'Marcus Nguyen',
     title: 'Marketing Director, Pixel & Pine',
     testimonial: 'His UI/UX work is next-level. Clean, intuitive, and just *felt* right.',
   },
   {
-    src: './assets/profilepic3.jpg',
+    src: '/assets/profilepic3.jpg',
     name: 'Lena Jackson',
     title: 'Creative Lead, Forge Studio',
     testimonial: 'We handed Matt a mess — he gave us a brand. And a plan. And a site that actually works.',
   },
   {
-    src: './assets/profilepic4.jpg',
+    src: '/assets/profilepic4.jpg',
     name: 'David Kim',
     title: 'CEO, Conversion Works',
-    testimonial: 'Matt’s marketing strategies weren’t just smart — they made us money.',
+    testimonial: "Matt's marketing strategies weren't just smart — they made us money.",
   },
 ]
 

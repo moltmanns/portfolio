@@ -5,11 +5,11 @@ import Link from 'next/link'
 import Navbar from '../components/Navbar'
 
 const projects = [
-  { src: "/assets/projects/flexsteel-website-thumbnail-2.jpg", link: "/Projects/Flexsteel", title: "Flexsteel Website" },
-  { src: "/assets/projects/doobq-app-design.jpg", link: "/Projects/DooBQ", title: "DooBQ Tourism App Design" },
-  { src: "/assets/projects/instylr-app-thumbnail.jpg", link: "/Projects/Instylr", title: "Instylr WebApp" },
-  { src: "/assets/projects/lootvault-website-thumbnail.jpg", link: "/Projects/LootVault", title: "LootVault WebApp" },
-  { src: "/assets/projects/dejurify-saas-thumbnail.jpg", link: "/Projects/Dejurify", title: "Dejurify SaaS" },
+  { src: "/assets/projects/flexsteel-website-thumbnail-2.jpg", link: "/projects/flexsteel", title: "Flexsteel Website" },
+  { src: "/assets/projects/doobq-app-design.jpg", link: "/projects/doobq", title: "DooBQ Tourism App Design" },
+  { src: "/assets/projects/instylr-app-thumbnail.jpg", link: "/projects/instylr", title: "Instylr WebApp" },
+  { src: "/assets/projects/lootvault-website-thumbnail.jpg", link: "/projects/lootvault", title: "LootVault WebApp" },
+  { src: "/assets/projects/dejurify-saas-thumbnail.jpg", link: "/projects/dejurify", title: "Dejurify SaaS" },
   { src: "/assets/projects/poopit-ecommerce-website-thumbnail.jpg", link: "https://poopitnbrowntown.com/", title: "PoopIt E-Commerce Website", newTab: true },
   { src: "/assets/projects/culbies-website-thumbnail.jpg", link: "https://culbieseventcenter.com/", title: "Culbie's Website", newTab: true },
   { src: "/assets/projects/bridgebr-website-thumbnail.jpg", link: "https://bridgebr.com/", title: "BridgeBR Website", newTab: true },
@@ -26,7 +26,7 @@ export default function ProjectsPage() {
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {projects.map((item, index) => {
-            const isInternal = item.link.startsWith('/Projects')
+            const isInternal = item.link.startsWith('/projects')
             const Wrapper = isInternal ? Link : 'a'
 
             return (
