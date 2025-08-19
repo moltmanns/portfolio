@@ -4,7 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { SiBootstrap, SiFigma, SiShopify, } from 'react-icons/si'
-import Navbar from '@/app/Custom/Navbar'
+import Navbar from '@/app/components/Navbar'
 
 const tools = [
   { name: 'Figma', icon: <SiFigma /> },

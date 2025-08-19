@@ -1,13 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import Navbar from './Custom/Navbar'
-import VerticalMarquee from './Custom/VerticalMarquee'
-import SocialProof from './Custom/SocialProof'
-import BottomPopup from './Custom/BottomPopup'
-import FloatingBlobs from './Custom/FloatingBlobs'
-import VerticalStack from './Custom/VerticalStack'
-import ContactModal from '@/app/Custom/ContactModal'
+import Navbar from './components/Navbar'
+import VerticalMarquee from './components/VerticalMarquee'
+import SocialProof from './components/SocialProof'
+import BottomPopup from './components/BottomPopup'
+import FloatingBlobs from './components/FloatingBlobs'
+import VerticalStack from './components/VerticalStack'
+import ContactModal from './components/ContactModal'
 
 export default function Home() {
   const [showContactModal, setShowContactModal] = useState(false)
@@ -38,8 +38,7 @@ export default function Home() {
 
           <div className="mt-12 lg:mt-36">
             <p className="max-w-lg text-base text-[#A6A6A6] mb-6">
-              And yes, I obsess over the little stuff so you don’t have to<br />
-              (and secretly judge when you don’t).
+              And yes, I obsess over the little stuff so you don’t have to (and secretly judge when you don’t).
             </p>
 
             {/* CTA + Social Proof */}
@@ -49,7 +48,7 @@ export default function Home() {
                 className="w-full sm:w-auto text-[#010101] cursor-pointer text-base sm:text-lg font-semibold py-2 px-8 sm:px-20 rounded-[50px] border-[2px] bg-[#7d92fe] border-[#000000] shadow-[3px_4px_0px_#000000] hover:shadow-none hover:scale-95 hover:bg-[#4efcf0] transition-all"
                 style={{ fontFamily: 'var(--font-body)' }}
               >
-                LET&apos;S CHAT
+                LET'S CHAT
               </button>
 
               {/* Contact Modal */}

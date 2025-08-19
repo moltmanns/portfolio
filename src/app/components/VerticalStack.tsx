@@ -12,21 +12,21 @@ interface StackedImage {
 
 
 const images = [
-  { src: "/assets/projects/flexsteel-website-thumbnail-2.jpg", link: "./Projects/Flexsteel", width: 488, height: 315 },
-  { src: "/assets/projects/lootvault-website-thumbnail.jpg", link: "./Projects/LootVault", width: 488, height: 315 },
-  { src: "/assets/projects/doobq-app-design.jpg", link: "./Projects/DooBQ", width: 488, height: 455 },
+  { src: "/assets/projects/flexsteel-website-thumbnail-2.jpg", link: "/projects/flexsteel", width: 488, height: 315 },
+  { src: "/assets/projects/lootvault-website-thumbnail.jpg", link: "/projects/lootvault", width: 488, height: 315 },
+  { src: "/assets/projects/doobq-app-design.jpg", link: "/projects/doobq", width: 488, height: 455 },
   { src: "/assets/projects/scm-website-thumbnail.jpg", link: "https://sleepycowmedia.com/", width: 488, height: 315, newTab: true },
   { src: "/assets/projects/culbies-website-thumbnail.jpg", link: "https://culbieseventcenter.com/", width: 488, height: 315, newTab: true },
   { src: "/assets/projects/poopit-ecommerce-website-thumbnail.jpg", link: "https://poopitnbrowntown.com/", width: 488, height: 315, newTab: true },
-  { src: "/assets/projects/instylr-app-thumbnail.jpg", link: "./Projects/Instylr", width: 488, height: 375 },
+  { src: "/assets/projects/instylr-app-thumbnail.jpg", link: "/projects/instylr", width: 488, height: 375 },
   { src: "/assets/projects/adamsarch-website-thumbnail.jpg", link: "https://simpleswitchdoor.com/", width: 488, height: 315, newTab: true },
   { src: "/assets/projects/bridgebr-website-thumbnail.jpg", link: "https://bridgebr.com/", width: 488, height: 315, newTab: true },
-  { src: "/assets/projects/dejurify-saas-thumbnail.jpg", link: "./Projects/Dejurify", width: 488, height: 405 },
+  { src: "/assets/projects/dejurify-saas-thumbnail.jpg", link: "/projects/dejurify", width: 488, height: 405 },
 ]
 
 const VerticalStack: React.FC = () => {
   const renderImage = (item: StackedImage, index: number) => {
-    const isInternal = item.link.startsWith("./")
+    const isInternal = item.link.startsWith("/projects")
     return (
       <a
         key={`stacked-${index}`}

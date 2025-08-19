@@ -2,7 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Navbar from '../Custom/Navbar'
+import Navbar from '../components/Navbar'
 
 const projects = [
   { src: "/assets/projects/flexsteel-website-thumbnail-2.jpg", link: "/Projects/Flexsteel", title: "Flexsteel Website" },

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-import ToastPopup from "./Custom/ToastPopup";
+import ToastPopup from "./components/ToastPopup";
 import ChatBubbleToggle from "@/components/ui/ChatBot/ChatBubbleToggle";
 
 export const metadata: Metadata = {

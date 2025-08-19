@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { SiFigma, SiReact, SiTailwindcss } from 'react-icons/si'
 import { FaGithub } from 'react-icons/fa'
-import Navbar from '@/app/Custom/Navbar'
+import Navbar from '@/app/components/Navbar'
 
 const tools = [
   { name: 'Figma', icon: <SiFigma /> },

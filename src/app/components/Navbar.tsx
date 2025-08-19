@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
         {/* Right: Projects + Menu */}
         <div className="flex items-center space-x-2 sm:space-x-4">
           <Link
-            href="/Projects"
+            href="/projects"
             aria-label="View Projects"
             className="text-[#ffffff] hover:text-[#4efcf0] transition px-2 sm:px-3 py-1 rounded-full flex items-center"
           >
