@@ -41,8 +41,15 @@ export default function ProjectsPage() {
               >
                 <div className="relative w-full h-[280px] bg-black">
                   {isInternal && (
-                    <div className="absolute top-4 left-4 bg-[#ffaedd] text-[#0d0d0d] text-xs font-semibold px-3 py-1 rounded-full z-10">
-                      Case Study
+                    <div className="absolute top-4 left-4 flex gap-2 z-10">
+                      <div className="bg-[#ffaedd] text-[#0d0d0d] text-xs font-semibold px-3 py-1 rounded-full">
+                        Case Study
+                      </div>
+                      {item.link === "/projects/flexsteel" && (
+                        <div className="bg-[#7efcd2] text-[#0d0d0d] text-xs font-semibold px-3 py-1 rounded-full">
+                          A.I.
+                        </div>
+                      )}
                     </div>
                   )}
                   <Image

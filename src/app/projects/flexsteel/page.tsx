@@ -4,6 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { SiBootstrap, SiFigma, SiShopify, } from 'react-icons/si'
+import { FaGithub } from 'react-icons/fa'
 import Navbar from '@/app/components/Navbar'
 
 const tools = [
@@ -13,6 +14,16 @@ const tools = [
 ]
 
 const images = [
+  {
+    src: '/assets/flexsteel/New-Smart-AI-Flexsteel.jpg',
+    title: 'AI Search',
+    description: 'We began by gathering and structuring all product data, then vectorized it into a searchable database optimized for an LLM. This enables the system to understand queries in natural language rather than relying on exact keyword matches.'
+  },
+  {
+    src: '/assets/flexsteel/New-Smart-AI-Flexsteel-Loaded.jpg',
+    title: 'AI Search Functions',
+    description: 'Once a query is entered, the AI surfaces relevant products along with contextual links to related content (e.g., full collections, care guides). Instead of just being a traditional search bar, it functions more like a conversational product expert.'
+  },
   {
     src: '/assets/flexsteel/flexsteel-img1.jpg',
     title: 'Retailer/Sales Survey',
@@ -168,6 +179,19 @@ export default function CaseStudyPage() {
               Post-launch, mobile traffic grew by 31.4%, retailer locator usage rose 27%, organic search improved 121%, and the mobile app saw strong adoption. Positive user feedback confirmed major UX gains. Ongoing SEO and exploring AR features are recommended next steps.
               </p>
             </div>
+
+            {/* GitHub Repo Button */}
+            <div className="pt-8">
+              <a
+                href="https://github.com/moltmanns/flexsteel-smart-drawer-search"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 border border-[#3affca] rounded-full text-xs text-[#3affca] hover:bg-[#3affca] hover:text-black transition-all duration-200 glow-on-hover"
+              >
+                <FaGithub className="text-sm" />
+                GitHub Repo
+              </a>
+            </div>
           </motion.div>
         </aside>
 
@@ -176,12 +200,13 @@ export default function CaseStudyPage() {
             {[
               [images[0], images[1]],
               [images[2], images[3]],
-              [images[4], images[5], images[6]],
-              [images[7], images[8]],
+              [images[4], images[5]],
+              [images[6], images[7], images[8]],
               [images[9], images[10]],
               [images[11], images[12]],
-              [images[13], images[14], images[15]],
-              [images[16]],
+              [images[13], images[14]],
+              [images[15], images[16], images[17]],
+              [images[18]],
             ].map((group, groupIndex) => (
               <motion.div
                 key={groupIndex}

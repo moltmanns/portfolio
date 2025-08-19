@@ -40,8 +40,15 @@ const VerticalMarquee: React.FC = () => {
       >
         <div className="relative w-full h-full">
           {isInternal && (
-            <div className="absolute top-4 left-4 border-1 border-[#0d0d0d] text-[#0d0d0d] text-[10px] px-2 py-1 rounded-full z-10">
-              Case Study
+            <div className="absolute top-4 left-4 flex gap-2 z-10">
+              <div className="border-1 border-[#0d0d0d] text-[#0d0d0d] text-[10px] px-2 py-1 rounded-full bg-white/90">
+                Case Study
+              </div>
+              {item.link === "/projects/flexsteel" && (
+                <div className="border-1 border-[#0d0d0d] text-[#0d0d0d] text-[10px] px-2 py-1 rounded-full bg-[#7efcd2]">
+                  A.I.
+                </div>
+              )}
             </div>
           )}
           <Image
