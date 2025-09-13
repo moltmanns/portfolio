@@ -27,7 +27,7 @@ export default function Home() {
             </p>
 
             <h1 className="text-[6rem] lg:text-[8.75rem] font-bold uppercase mb-16 leading-[0.85em]">
-              Web Dev. UIUX. Product Strategy.
+              Web Dev.<br /> UIUX. Product Strategy.
             </h1>
 
             <p className="accented absolute bottom-5 right-0 lg:-bottom-0 lg:right-[80] lg:mt-[-32px] text-base sm:text-lg lg:text-xl">
