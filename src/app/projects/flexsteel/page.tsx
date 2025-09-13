@@ -122,7 +122,7 @@ export default function CaseStudyPage() {
             UI/UX Website Overhaul<br />
             and Mobile App Design
             </div>
-            <p className='text-sm'>Flexsteel D2C Website Was Due</p>
+            <p className='text-sm'>Flexsteel D2C Website Was Due/ Zecliner Website Built Myself Completely</p>
 
             <div className="flex flex-wrap gap-3 text-2xl text-[#7efcd2] mb-12">
               {tools.map((tool, i) => (

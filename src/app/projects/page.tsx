@@ -16,7 +16,70 @@ const projects = [
   { src: "/assets/projects/scm-website-thumbnail.jpg", link: "https://sleepycowmedia.com", title: "Sleepy Cow Media Website" },
 ]
 
+const currentProjects = [
+  // { src: "/assets/projects/project1-thumbnail.jpg", link: "/projects/ai-gm", title: "AI-GM", badge: "In Development" },
+  { src: "/assets/dwd/DWD-website-main-img.jpg", link: "/projects/project-time-tracking-dashboard", title: "Project QR Time Tracking Dashboard", badge: "Client Build" },
+  { src: "/assets/pps/PPS-website-main-img.jpg", link: "/projects/pps-webapp", title: "Prisoners Personal Secretary", badge: "Client Build" },
+]
+
 export default function ProjectsPage() {
+  const renderProjectGrid = (projectList: any[], isCurrentProjects = false) => {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {projectList.map((item, index) => {
+          const isInternal = item.link.startsWith('/projects')
+          const Wrapper = isInternal ? Link : 'a'
+
+          return (
+            <Wrapper
+              key={index}
+              href={item.link}
+              {...(!isInternal ? {
+                target: '_blank',
+                rel: 'noopener noreferrer',
+              } : {})}
+              className="group block border border-[#2a2a2a] rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
+            >
+              <div className="relative w-full h-[280px] bg-black">
+                {isInternal && (
+                  <div className="absolute top-4 left-4 flex gap-2 z-10">
+                    {!isCurrentProjects && (
+                      <div className="bg-[#ffaedd] text-[#0d0d0d] text-xs font-semibold px-3 py-1 rounded-full">
+                        Case Study
+                      </div>
+                    )}
+                    {isCurrentProjects && item.badge && (
+                      <div className="bg-[#4efcf0] text-[#0d0d0d] text-xs font-semibold px-3 py-1 rounded-full">
+                        {item.badge}
+                      </div>
+                    )}
+                    {item.link === "/projects/flexsteel" && (
+                      <div className="bg-[#7efcd2] text-[#0d0d0d] text-xs font-semibold px-3 py-1 rounded-full">
+                        A.I.
+                      </div>
+                    )}
+                  </div>
+                )}
+                <Image
+                  src={item.src}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                  unoptimized={!item.src.startsWith('/')}
+                />
+              </div>
+              <div className="p-4">
+                <h3 className="text-base md:text-base text-white group-hover:text-[#4efcf0] transition">
+                  {item.title}
+                </h3>
+              </div>
+            </Wrapper>
+          )
+        })}
+      </div>
+    )
+  }
+
   return (
     <>
       <Navbar />
@@ -24,51 +87,12 @@ export default function ProjectsPage() {
         <h1 className="text-2xl md:text-4xl font-bold mb-10 text-white">
           Explore Projects
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {projects.map((item, index) => {
-            const isInternal = item.link.startsWith('/projects')
-            const Wrapper = isInternal ? Link : 'a'
-
-            return (
-              <Wrapper
-                key={index}
-                href={item.link}
-                {...(!isInternal ? {
-                  target: '_blank',
-                  rel: 'noopener noreferrer',
-                } : {})}
-                className="group block border border-[#2a2a2a] rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
-              >
-                <div className="relative w-full h-[280px] bg-black">
-                  {isInternal && (
-                    <div className="absolute top-4 left-4 flex gap-2 z-10">
-                      <div className="bg-[#ffaedd] text-[#0d0d0d] text-xs font-semibold px-3 py-1 rounded-full">
-                        Case Study
-                      </div>
-                      {item.link === "/projects/flexsteel" && (
-                        <div className="bg-[#7efcd2] text-[#0d0d0d] text-xs font-semibold px-3 py-1 rounded-full">
-                          A.I.
-                        </div>
-                      )}
-                    </div>
-                  )}
-                  <Image
-                    src={item.src}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                    unoptimized={!item.src.startsWith('/')}
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-base md:text-base text-white group-hover:text-[#4efcf0] transition">
-                    {item.title}
-                  </h3>
-                </div>
-              </Wrapper>
-            )
-          })}
-        </div>
+        {renderProjectGrid(projects)}
+        
+        <h1 className="text-2xl md:text-4xl font-bold mb-10 mt-16 text-white">
+          Current Projects
+        </h1>
+        {renderProjectGrid(currentProjects, true)}
       </div>
     </>
   )

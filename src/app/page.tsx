@@ -23,11 +23,11 @@ export default function Home() {
           <div className="relative">
             {/* Accented top-left */}
             <p className="accented absolute top-[-9] left-[-8] lg:-top-3 lg:left-[-30] text-lg sm:text-xl lg:text-2xl">
-              Iowa’s Finest (Web Designer, Not Corn)
+              Iowa’s Finest (Web Designer/Dev, Not Corn)
             </p>
 
             <h1 className="text-[6rem] lg:text-[8.75rem] font-bold uppercase mb-16 leading-[0.85em]">
-              Web Design. UIUX. Product Strategy.
+              Web Dev. UIUX. Product Strategy.
             </h1>
 
             <p className="accented absolute bottom-5 right-0 lg:-bottom-0 lg:right-[80] lg:mt-[-32px] text-base sm:text-lg lg:text-xl">

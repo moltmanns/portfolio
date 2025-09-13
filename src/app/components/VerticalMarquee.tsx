@@ -23,7 +23,7 @@ const images2 = [
   { src: "/assets/projects/instylr-app-thumbnail.jpg", link: "/projects/instylr", width: 488, height: 375 },
   { src: "/assets/projects/adamsarch-website-thumbnail.jpg", link: "https://simpleswitchdoor.com/", width: 488, height: 315, newTab: true },
   { src: "/assets/projects/bridgebr-website-thumbnail.jpg", link: "https://bridgebr.com/", width: 488, height: 315, newTab: true },
-  { src: "/assets/projects/dejurify-saas-thumbnail.jpg", link: "/projects/dejurify", width: 488, height: 405 },
+  { src: "/assets/projects/pps-thumbnail.jpg", link: "/projects/pps-webapp", width: 488, height: 405 },
 ]
 
 const VerticalMarquee: React.FC = () => {
